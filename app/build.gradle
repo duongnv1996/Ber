@@ -1,0 +1,94 @@
+apply plugin: 'com.android.application'
+
+android {
+    useLibrary 'org.apache.http.legacy'
+    compileSdkVersion 24
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.umberapp.umber"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //For OneSignal Config
+        manifestPlaceholders = [manifestApplicationId          : "${applicationId}",
+                onesignal_app_id: "13878400-5a88-4b3d-b691-61d9d6929fd2",
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: "618537557316"]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.google.android.gms:play-services-gcm:9.4.0"
+    //    compile 'com.google.android.gms:play-services:9.4.0'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.github.clans:fab:1.6.2'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
+    compile 'com.google.code.gson:gson:2.5'
+    compile 'com.afollestad.material-dialogs:core:0.9.0.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'me.grantland:autofittextview:0.2.1'
+    compile 'com.balysv:material-ripple:1.0.2'
+    compile 'com.github.aakira:expandable-layout:1.5.1@aar'
+    compile 'com.wdullaer:materialdatetimepicker:2.5.0'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.google.android.gms:play-services-gcm:9.4.0'
+    compile 'com.google.android.gms:play-services-maps:9.4.0'
+    compile 'com.google.android.gms:play-services-places:9.4.0'
+    compile 'com.google.android.gms:play-services-plus:9.4.0'
+    compile 'com.google.android.gms:play-services-location:9.4.0'
+    compile 'com.google.android.gms:play-services-auth:9.4.0'
+    compile 'com.google.firebase:firebase-core:9.4.0'
+    compile "com.google.firebase:firebase-messaging:9.4.0"
+    compile 'com.github.iwgang:countdownview:2.1.2'
+    compile 'com.wang.avi:library:2.1.3'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'com.github.doctoror.geocoder:library:1.0.0'
+    compile 'me.iwf.photopicker:PhotoPicker:0.8.11@aar'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.1'
+
+    compile 'com.facebook.android:account-kit-sdk:4.+'
+    compile 'com.hbb20:ccp:1.7.1'   //country code
+    compile 'com.sromku:simple-fb:4.1.1'    //fb lib
+    compile 'homhomlin.lib:ptrrv-library:1.3.1'     //rcv custom
+    compile 'com.github.brunodles:PicPicker:1.2.1'    //pick image
+    compile('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {             //snackbar top
+        // exclusion is not necessary, but generally a good idea.
+        exclude group: 'com.google.android', module: 'support-v4'
+    }
+    compile 'com.onesignal:OneSignal:3.+@aar'       // onesignal
+    compile 'com.wang.avi:library:1.0.0'        //loading view
+    compile 'com.github.traex.rippleeffect:library:1.3'             //Ripple view
+    compile ('io.socket:socket.io-client:0.8.3') {
+        // excluding org.json which is provided by Android          //socket
+        exclude group: 'org.json', module: 'json'
+    }
+    compile 'com.github.nkzawa:socket.io-client:0.3.0'          //socket using
+    compile 'com.squareup.picasso:picasso:2.5.2'            //load image
+    compile 'com.github.vihtarb:tooltip:0.1.9'              //tooltip
+    compile 'com.crittercism:crittercism-android-agent:5.5.1-rc-1'          //crash report
+
+    testCompile 'junit:junit:4.12'
+}
+apply plugin: 'com.google.gms.google-services'

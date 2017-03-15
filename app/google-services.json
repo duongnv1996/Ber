@@ -1,0 +1,70 @@
+{
+  "project_info": {
+    "project_number": "618537557316",
+    "firebase_url": "https://umber-150403.firebaseio.com",
+    "project_id": "umber-150403",
+    "storage_bucket": "umber-150403.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618537557316:android:97d090d7d7afc4ae",
+        "android_client_info": {
+          "package_name": "com.umberapp.umber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618537557316-4t3qarjp98ur1aljqeicap7ep9rh9g31.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.umberapp.umber",
+            "certificate_hash": "57e94ea25afcd05868cdbc579daf1858b13dade9"
+          }
+        },
+        {
+          "client_id": "618537557316-u0guti7v89bcb2blk8s7niv7lukpui5d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.umberapp.umber",
+            "certificate_hash": "3d7e504fe56e6cb3543c03810b60672b76b50985"
+          }
+        },
+        {
+          "client_id": "618537557316-pvops5aak13upe79sq3rvnudcj9cipb6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.umberapp.umber",
+            "certificate_hash": "015188ddab4a1f3e24839d7cd93c956c1b048785"
+          }
+        },
+        {
+          "client_id": "618537557316-1s739h09hnniq8r2pidaqdb3tl677h2g.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "618537557316-agopcr0c39fthjjra7a0s6d37cho3kmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuHV9GK-87OFeDj2GOBEY1yCAy8ExNg4Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
