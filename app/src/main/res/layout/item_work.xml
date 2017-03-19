@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@+id/ll_work" android:background="?selectableItemBackground" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/margin_large" android:src="@drawable/ic_worker" />
+        <TextView android:id="@+id/tv_name_work" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="Giúp việc một lần" style="@style/TextviewTypeWorkStyle" />
+    </LinearLayout>
+    <View android:background="@color/divider" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/margin_large" android:layout_marginRight="@dimen/margin_large" />
+</LinearLayout>

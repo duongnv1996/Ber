@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_address_map"
+    android:minHeight="400.0dip"
+    android:minWidth="300.0dip">
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_large"
+        app:indicatorColor="@color/colorPrimary" />
+
+    <LinearLayout
+        android:id="@+id/ll_root"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_address_map"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_address_map">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_address_map"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/margin_large"
+                android:paddingRight="@dimen/margin_large">
+
+                <FrameLayout
+                    android:layout_width="100.0dip"
+                    android:layout_height="100.0dip"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10.0dip">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profilePic"
+                        android:layout_width="80.0dip"
+                        android:layout_height="80.0dip"
+                        android:layout_gravity="bottom|center"
+                        android:src="@drawable/background" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ic_category"
+                        android:layout_width="30.0dip"
+                        android:layout_height="30.0dip"
+                        android:layout_gravity="center|right|top"
+                        android:layout_marginTop="30.0dip"
+                        android:src="@drawable/background" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="Name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_large" />
+
+                <RatingBar
+                    android:id="@+id/rate"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:numStars="5"
+                    android:rating="3.0"
+                    android:stepSize="1.0" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_assignment_turned_in_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/tv_job_done"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="18 jobs done"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium" />
+                </LinearLayout>
+
+                <include layout="@layout/row_item" />
+
+                <TextView
+                    style="@style/TextExpertFragment"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:background="@color/white_bg"
+                    android:gravity="left"
+                    android:padding="@dimen/margin_small"
+                    android:paddingLeft="@dimen/margin_large"
+                    android:text="@string/self_description" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcv_des"
+                    android:layout_width="fill_parent"
+                    android:layout_height="150.0dip"
+                    android:layout_marginTop="@dimen/margin_medium" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/ll_back"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginLeft="@dimen/margin_small"
+                        android:layout_marginRight="@dimen/margin_small"
+                        android:layout_weight="1.0"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:selectableItemBackground"
+                        android:gravity="center"
+                        android:onClick="onClick"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="8.0dip"
+                        app:cardElevation="@dimen/elevation_card">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="@dimen/margin_medium"
+                            android:text="@string/back"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_large" />
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/ll_select"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginLeft="@dimen/margin_small"
+                        android:layout_marginRight="@dimen/margin_small"
+                        android:layout_weight="1.0"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:selectableItemBackground"
+                        android:gravity="center"
+                        android:onClick="onClick"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        app:cardCornerRadius="8.0dip"
+                        app:cardElevation="@dimen/elevation_card">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="@dimen/margin_medium"
+                            android:text="@string/select"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_large" />
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

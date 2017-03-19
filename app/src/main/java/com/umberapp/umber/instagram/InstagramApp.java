@@ -119,7 +119,7 @@ public class InstagramApp {
                 URL url = new URL("https://api.instagram.com/v1/users/" + InstagramApp.this.mSession.getId() + "/?access_token=" + InstagramApp.this.mAccessToken);
                 Log.d(InstagramApp.TAG, "Opening URL " + url.toString());
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod(GetInstagramUserTask.GET);
+                urlConnection.setRequestMethod("GET");
                 urlConnection.setDoInput(true);
                 urlConnection.connect();
                 String response = InstagramApp.this.streamToString(urlConnection.getInputStream());

@@ -108,23 +108,23 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener,
     private NetworkStateReceiver internetReceiver;
     private boolean isLoginFirst;
     OAuthAuthenticationListener listener;
-    @Bind({2131689681})
+    @Bind(R.id.contentview)
     CoordinatorLayout llRoot;
-    @Bind({2131689682})
+    @Bind(R.id.ll_login_nomal)
     LinearLayout llSigInNomal;
-    @Bind({2131689689})
+    @Bind(R.id.ll_login_option)
     LinearLayout llSignInOption;
     InstagramApp mApp;
-    @Bind({2131689678})
+    @Bind(R.id.btn_resetpass)
     Button mBtnResetPass;
-    @Bind({2131689683})
+    @Bind(R.id.edt_email)
     EditText mEdtEmail;
-    @Bind({2131689685})
+    @Bind(R.id.edt_password)
     EditText mEdtPassword;
     GoogleApiClient mGoogleApiClient;
-    @Bind({2131689676})
+    @Bind({R.id.logo})
     ImageView mImgLogo;
-    @Bind({2131689680})
+    @Bind({R.id.progressBar})
     ProgressBar mProgress;
     private OnProfileListener onProfileListener;
     String phone;
@@ -261,11 +261,11 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener,
                 }
                 return;
             }
-            Toast.makeText(LoginActivity.this, LoginActivity.this.getString(R.string.unknow_error), LoginActivity.CODE_RESET_PASS).show();
+            Toast.makeText(LoginActivity.this, LoginActivity.this.getString(R.string.unknow_error), Toast.LENGTH_SHORT).show();
         }
 
         public void onFail(String error) {
-            Toast.makeText(LoginActivity.this, error, LoginActivity.CODE_RESET_PASS).show();
+            Toast.makeText(LoginActivity.this, error,Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -452,6 +452,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener,
             } catch (GoogleAuthException e2) {
                 e2.printStackTrace();
             }
+            return ace;
         }
 
         protected void onPostExecute(String s) {
@@ -615,6 +616,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener,
             case R.id.fb /*2131689673*/:
                 this.codeSignIn = CODE_RESET_PASS;
                 signInFacebook();
+                break;
             case R.id.ins /*2131689674*/:
                 if (this.mApp.hasAccessToken()) {
                     this.codeSignIn = CODE_ACTIVE;
@@ -623,21 +625,35 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener,
                     return;
                 }
                 this.mApp.authorize();
+                break;
+
             case R.id.gg /*2131689675*/:
                 this.codeSignIn = 2;
                 signInGoogle();
+                break;
+
             case R.id.btn_resetpass /*2131689678*/:
                 startActivityForResult(new Intent(this, ForgotPasswordActivity.class), CODE_RESET_PASS);
+                break;
+
             case R.id.btn_goto_register /*2131689686*/:
                 startActivityForResult(new Intent(this, RegisterActivity.class), CODE_ACTIVE);
+                break;
+
             case R.id.btn_login /*2131689688*/:
                 signIn();
+                break;
+
             case R.id.btn_login_by_phone /*2131689690*/:
                 this.codeSignIn = 3;
                 onLoginPhone();
+                break;
+
             case R.id.btn_login_by_username /*2131689691*/:
-                this.llSignInOption.setVisibility(8);
-                this.llSigInNomal.setVisibility(CODE_RESET_PASS);
+                this.llSignInOption.setVisibility(View.GONE);
+                this.llSigInNomal.setVisibility(View.VISIBLE);
+                break;
+
             default:
         }
     }
@@ -746,7 +762,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener,
 
     protected void onResume() {
         super.onResume();
-        this.mProgress.setVisibility(8);
+        this.mProgress.setVisibility(View.GONE);
         this.simpleFacebook = SimpleFacebook.getInstance(this);
     }
 

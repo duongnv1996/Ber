@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.andexert.library.RippleView app:rv_rippleDuration="200" app:rv_color="@color/white_bg" style="@style/RippleWhiteMin" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@+id/ll_work" android:background="?selectableItemBackground" android:padding="@dimen/margin_small" android:layout_width="fill_parent" android:layout_height="wrap_content"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <ImageView android:id="@+id/img_cate" android:layout_width="@dimen/size_img_category" android:layout_height="@dimen/size_img_category" android:layout_margin="@dimen/margin_medium" android:src="@drawable/ic_worker" />
+        <TextView android:id="@+id/tv_cate" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/TextviewTypeWorkStyle" />
+    </LinearLayout>
+</com.andexert.library.RippleView>

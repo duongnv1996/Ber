@@ -111,81 +111,81 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
     private static final int PLACE_PICKER_FLAG = 1;
     ArrayAdapter<String> adapter;
     final String[] arrGender;
-    @Bind({2131689729})
+    @Bind({R.id.btn_register})
     Button btnReg;
-    @Bind({2131689725})
+    @Bind({R.id.btn_remove_photo})
     Button btnRemovePhoto;
-    @Bind({2131689726})
+    @Bind({R.id.btn_photo})
     Button btnTakePhoto;
     private IntentBuilder builder;
     private CantFindCameraAppErrorListener cameraAppErrorListener;
-    @Bind({2131689704})
+    @Bind({R.id.ccp})
     CountryCodePicker contryCode;
     String[] coordinates;
     private ProgressDialogCustom dialogProgress;
     private ErrorCreatingTempFileForCameraListener fileForCameraListener;
-    @Bind({2131689724})
+    @Bind({R.id.img_avt})
     CircleImageView imgAvt;
     private boolean isFixed;
     private boolean isUpdateAKProfile;
     private boolean isUpdateFacebook;
-    @Bind({2131689707})
+    @Bind({R.id.ll_root_pass})
     LinearLayout llPass;
-    @Bind({2131689709})
+    @Bind({R.id.ll_root_repass})
     LinearLayout llRepass;
-    @Bind({2131689723})
+    @Bind({R.id.ll_root_image_reg})
     RelativeLayout llRootImage;
-    @Bind({2131689703})
+    @Bind({R.id.ll_root_phone})
     LinearLayout llRootPhone;
     Location location;
-    @Bind({2131689727})
+    @Bind({R.id.cb})
     AppCompatCheckBox mCb;
-    @Bind({2131689716})
+    @Bind({R.id.edt_address})
     EditText mEdtAddress;
-    @Bind({2131689720})
+    @Bind({R.id.edt_birth})
     EditText mEdtBirth;
-    @Bind({2131689683})
+    @Bind({R.id.edt_email})
     EditText mEdtEmail;
-    @Bind({2131689712})
+    @Bind({R.id.edt_first_name})
     EditText mEdtFirstName;
-    @Bind({2131689714})
+    @Bind({R.id.edt_lastname})
     EditText mEdtLastName;
-    @Bind({2131689685})
+    @Bind({R.id.edt_password})
     EditText mEdtPassword;
-    @Bind({2131689705})
+    @Bind({R.id.edt_sdt})
     EditText mEdtPhone;
-    @Bind({2131689710})
+    @Bind({R.id.edt_repassword})
     EditText mEdtRePassword;
-    @Bind({2131689721})
+    @Bind({R.id.edt_ref})
     EditText mEdtRef;
     File mFileAvata;
     protected GoogleApiClient mGoogleApiClient;
     String mPass;
     String mPhone;
-    @Bind({2131689680})
+    @Bind({R.id.progressBar})
     ProgressBar mProgress;
-    @Bind({2131689722})
+    @Bind({R.id.sp_gender})
     AppCompatSpinner mSpGender;
     User mUser;
     private PicPicker picPicker;
     private PicResultListener picResultListener;
     private BroadcastReceiver receiver;
     String strContryCode;
-    @Bind({2131689717})
+    @Bind({R.id.tv_invalid_address})
     TextView tvInvalidAddress;
-    @Bind({2131689718})
+    @Bind({R.id.tv_invalid_email})
     TextView tvInvalidEmail;
-    @Bind({2131689713})
+    @Bind({R.id.tv_invalid_firstname})
     TextView tvInvalidFirst;
-    @Bind({2131689715})
+    @Bind({R.id.tv_invalid_lastName})
     TextView tvInvalidLastname;
-    @Bind({2131689708})
+    @Bind({R.id.tv_invalid_pass})
     TextView tvInvalidPass;
-    @Bind({2131689706})
+    @Bind({R.id.tv_invalid_phone})
     TextView tvInvalidPhone;
-    @Bind({2131689711})
+    @Bind({R.id.tv_invalid_repeat})
     TextView tvInvalidRepeat;
-    @Bind({2131689728})
+    @Bind({R.id.tv_term})
     TextView tvTerm;
     UmberService umberService;
     User userFromLogin;
@@ -536,9 +536,9 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
         public void onFocusChange(View view, boolean b) {
             if (!b) {
                 if (RegisterActivity.this.mEdtPhone.getText().toString().equals(BuildConfig.FLAVOR)) {
-                    RegisterActivity.this.tvInvalidPhone.setVisibility(0);
+                    RegisterActivity.this.tvInvalidPhone.setVisibility(View.VISIBLE);
                 } else {
-                    RegisterActivity.this.tvInvalidPhone.setVisibility(8);
+                    RegisterActivity.this.tvInvalidPhone.setVisibility(View.GONE);
                 }
             }
         }
@@ -577,14 +577,14 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
                 }
 
                 protected void onPostExecute(Bitmap[] bitmaps) {
-                    RegisterActivity.this.mProgress.setVisibility(8);
+                    RegisterActivity.this.mProgress.setVisibility(View.GONE);
                     RegisterActivity.this.mFileAvata = FileUtils.SaveImage(RegisterActivity.this, bitmaps[0]);
                     Image image = new Image();
                     image.setPhoto(Bitmap.createScaledBitmap(bitmaps[0], RegisterActivity.PLACE_AUTOCOMPLETE_REQUEST_CODE, RegisterActivity.PLACE_AUTOCOMPLETE_REQUEST_CODE, false));
                     if (RegisterActivity.this.mFileAvata != null && RegisterActivity.this.mFileAvata.exists()) {
                         RegisterActivity.this.imgAvt.setImageBitmap(Bitmap.createScaledBitmap(bitmaps[0], ApiConstants.CODE_SUCESS, ApiConstants.CODE_SUCESS, false));
-                        RegisterActivity.this.btnRemovePhoto.setVisibility(0);
-                        RegisterActivity.this.imgAvt.setVisibility(0);
+                        RegisterActivity.this.btnRemovePhoto.setVisibility(View.VISIBLE);
+                        RegisterActivity.this.imgAvt.setVisibility(View.VISIBLE);
                         image.setPath(RegisterActivity.this.mFileAvata.getPath());
                     }
                 }
@@ -592,8 +592,8 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
 
             public void onPictureResult(Bitmap bitmap) {
                 RLog.m86e("recieve photo");
-                RegisterActivity.this.mProgress.setVisibility(0);
-                RegisterActivity.this.llRootImage.setVisibility(0);
+                RegisterActivity.this.mProgress.setVisibility(View.VISIBLE);
+                RegisterActivity.this.llRootImage.setVisibility(View.VISIBLE);
                 C13571 c13571 = new C13571(ApiConstants.CODE_ERROR_SERVER);
                 Bitmap[] bitmapArr = new Bitmap[RegisterActivity.PLACE_PICKER_FLAG];
                 bitmapArr[0] = bitmap;
@@ -632,17 +632,17 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
                 if (this.userFromLogin != null) {
                     AlertDialogCustom.dialogMsg(this, getString(R.string.non_exist_fb)).show();
                     this.isUpdateFacebook = true;
-                    this.llRepass.setVisibility(0);
-                    this.llPass.setVisibility(0);
+                    this.llRepass.setVisibility(View.VISIBLE);
+                    this.llPass.setVisibility(View.VISIBLE);
                     if (this.userFromLogin.getAvatar() != null) {
                         if (this.userFromLogin.getAvatar().contains("http")) {
                             ((C13582) Glide.with((FragmentActivity) this).load(this.userFromLogin.getAvatar()).asBitmap().thumbnail(0.5f).listener(new C13593()).into(new C13582())).onLoadFailed(new IOException(), getResources().getDrawable(R.drawable.ic_stat_onesignal_default));
                         } else {
                             ((C13604) Glide.with((FragmentActivity) this).load(ApiConstants.API_PHOTO_ROOT + this.userFromLogin.getAvatar()).asBitmap().thumbnail(0.5f).listener(new C13615()).into(new C13604())).onLoadFailed(new IOException(), getResources().getDrawable(R.drawable.ic_stat_onesignal_default));
                         }
-                        this.llRootImage.setVisibility(0);
-                        this.btnRemovePhoto.setVisibility(0);
-                        this.imgAvt.setVisibility(0);
+                        this.llRootImage.setVisibility(View.VISIBLE);
+                        this.btnRemovePhoto.setVisibility(View.VISIBLE);
+                        this.imgAvt.setVisibility(View.VISIBLE);
                         this.umberService.downloadFilePin(this.userFromLogin.getAvatar()).enqueue(new C13626());
                     }
                     if (this.userFromLogin.getBirthday() != null) {
@@ -657,7 +657,7 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
                     if (this.userFromLogin.getPhone() != null) {
                         this.mEdtPhone.setText("+" + this.userFromLogin.getPhone());
                         this.mEdtPhone.setEnabled(false);
-                        this.contryCode.setVisibility(8);
+                        this.contryCode.setVisibility(View.GONE);
                         this.isUpdateAKProfile = true;
                     }
                     if (this.userFromLogin.getEmail() != null) {
@@ -681,9 +681,9 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
             public void onFocusChange(View view, boolean b) {
                 if (!b) {
                     if (RegisterActivity.this.mEdtPassword.getText().length() < 6) {
-                        RegisterActivity.this.tvInvalidPass.setVisibility(0);
+                        RegisterActivity.this.tvInvalidPass.setVisibility(View.VISIBLE);
                     } else {
-                        RegisterActivity.this.tvInvalidPass.setVisibility(8);
+                        RegisterActivity.this.tvInvalidPass.setVisibility(View.GONE);
                     }
                 }
             }
@@ -692,9 +692,9 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
             public void onFocusChange(View view, boolean b) {
                 if (!b) {
                     if (RegisterActivity.this.mEdtRePassword.getText().toString().equals(RegisterActivity.this.mEdtPassword.getText().toString())) {
-                        RegisterActivity.this.tvInvalidRepeat.setVisibility(8);
+                        RegisterActivity.this.tvInvalidRepeat.setVisibility(View.GONE);
                     } else {
-                        RegisterActivity.this.tvInvalidRepeat.setVisibility(0);
+                        RegisterActivity.this.tvInvalidRepeat.setVisibility(View.VISIBLE);
                     }
                 }
             }
@@ -703,9 +703,9 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
             public void onFocusChange(View view, boolean b) {
                 if (!b) {
                     if (RegisterActivity.this.mEdtFirstName.getText().toString().isEmpty()) {
-                        RegisterActivity.this.tvInvalidFirst.setVisibility(0);
+                        RegisterActivity.this.tvInvalidFirst.setVisibility(View.VISIBLE);
                     } else {
-                        RegisterActivity.this.tvInvalidFirst.setVisibility(8);
+                        RegisterActivity.this.tvInvalidFirst.setVisibility(View.GONE);
                     }
                 }
             }
@@ -714,9 +714,9 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
             public void onFocusChange(View view, boolean b) {
                 if (!b) {
                     if (RegisterActivity.this.mEdtLastName.getText().toString().isEmpty()) {
-                        RegisterActivity.this.tvInvalidLastname.setVisibility(0);
+                        RegisterActivity.this.tvInvalidLastname.setVisibility(View.VISIBLE);
                     } else {
-                        RegisterActivity.this.tvInvalidLastname.setVisibility(8);
+                        RegisterActivity.this.tvInvalidLastname.setVisibility(View.GONE);
                     }
                 }
             }
@@ -725,9 +725,9 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
             public void onFocusChange(View view, boolean b) {
                 if (!b) {
                     if (RegisterActivity.this.mEdtAddress.getText().toString().isEmpty()) {
-                        RegisterActivity.this.tvInvalidAddress.setVisibility(0);
+                        RegisterActivity.this.tvInvalidAddress.setVisibility(View.VISIBLE);
                     } else {
-                        RegisterActivity.this.tvInvalidAddress.setVisibility(8);
+                        RegisterActivity.this.tvInvalidAddress.setVisibility(View.GONE);
                     }
                 }
             }
@@ -736,9 +736,9 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
             public void onFocusChange(View view, boolean b) {
                 if (!b) {
                     if (RegisterActivity.this.mEdtEmail.getText().toString().isEmpty() || !RegisterActivity.this.mEdtEmail.getText().toString().contains("@")) {
-                        RegisterActivity.this.tvInvalidEmail.setVisibility(0);
+                        RegisterActivity.this.tvInvalidEmail.setVisibility(View.VISIBLE);
                     } else {
-                        RegisterActivity.this.tvInvalidEmail.setVisibility(8);
+                        RegisterActivity.this.tvInvalidEmail.setVisibility(View.GONE);
                     }
                 }
             }
@@ -773,9 +773,9 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
                     this.mFileAvata.delete();
                     this.mFileAvata = null;
                 }
-                this.btnRemovePhoto.setVisibility(8);
-                this.imgAvt.setVisibility(8);
-                this.llRootImage.setVisibility(8);
+                this.btnRemovePhoto.setVisibility(View.GONE);
+                this.imgAvt.setVisibility(View.GONE);
+                this.llRootImage.setVisibility(View.GONE);
             case R.id.btn_photo /*2131689726*/:
                 PhotoPicker.builder().setPhotoCount(PLACE_PICKER_FLAG).setShowCamera(true).setShowGif(true).setPreviewEnabled(true).start((Activity) this, PhotoPicker.REQUEST_CODE);
             case R.id.tv_term /*2131689728*/:
@@ -901,7 +901,7 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
 
     protected void onResume() {
         super.onResume();
-        this.mProgress.setVisibility(8);
+        this.mProgress.setVisibility(View.GONE);
         registerReceiver(this.receiver, new IntentFilter(EtaxiService.ACTION_LOCATION_UPDATE));
     }
 
@@ -980,10 +980,10 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
                 this.mFileAvata = new File(result.getUri().getPath());
                 this.imgAvt.setImageBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeFile(this.mFileAvata.getPath()), PLACE_AUTOCOMPLETE_REQUEST_CODE, PLACE_AUTOCOMPLETE_REQUEST_CODE, false));
                 Glide.with((FragmentActivity) this).load(this.mFileAvata).into(this.imgAvt).onLoadFailed(new IOException(), getResources().getDrawable(R.drawable.ic_stat_onesignal_default));
-                this.mProgress.setVisibility(8);
-                this.llRootImage.setVisibility(0);
-                this.btnRemovePhoto.setVisibility(0);
-                this.imgAvt.setVisibility(0);
+                this.mProgress.setVisibility(View.GONE);
+                this.llRootImage.setVisibility(View.VISIBLE);
+                this.btnRemovePhoto.setVisibility(View.VISIBLE);
+                this.imgAvt.setVisibility(View.VISIBLE);
             } else if (resultCode == 204) {
                 result.getError();
             }
@@ -1020,4 +1020,8 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
         this.dialogProgress.showDialog();
         this.umberService.checkUsername(username).enqueue(new AnonymousClass27(user, pass, username));
     }
+
+
+
+
 }

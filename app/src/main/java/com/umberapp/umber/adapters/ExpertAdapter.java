@@ -96,7 +96,7 @@ public class ExpertAdapter extends Adapter<ExpertAdapter.ExpertHolder> {
             holder.tvDist.setText(CommonUtils.round(ex.getDistance() / 1000.0d, 2) + this.context.getString(R.string.km));
             RangeTime rangeTime = ex.getTimeRange();
             if (rangeTime == null || rangeTime.getStart().isEmpty() || rangeTime.getEnd().isEmpty() || this.mRangTime == null || (rangeTime.getEnd().equals(this.mRangTime.getEnd()) && rangeTime.getStart().equals(this.mRangTime.getStart()))) {
-                holder.tvTime.setVisibility(8);
+                holder.tvTime.setVisibility(View.GONE);
             } else {
                 long start = Long.parseLong(rangeTime.getStart());
                 long end = Long.parseLong(rangeTime.getEnd());

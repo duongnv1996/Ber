@@ -120,9 +120,9 @@ public class UpcomingActivity extends BaseActivity implements OnClickListener {
         }
 
         public void onResponse(Call<ApiResponse<List<UpcommingItem>>> call, Response<ApiResponse<List<UpcommingItem>>> response) {
-            UpcomingActivity.this.loadNoti.setVisibility(8);
+            UpcomingActivity.this.loadNoti.setVisibility(View.GONE);
             if (response.isSuccessful()) {
-                UpcomingActivity.this.llNoti.setVisibility(0);
+                UpcomingActivity.this.llNoti.setVisibility(View.VISIBLE);
                 int offset = UpcomingActivity.this.listOrderItemPages.size();
                 UpcomingActivity.this.listOrderItemPages.addAll((Collection) ((ApiResponse) response.body()).getData());
                 UpcomingActivity.this.rcvNoti.setSwipeEnable(true);

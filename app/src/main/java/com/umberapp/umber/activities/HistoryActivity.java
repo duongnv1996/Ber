@@ -101,9 +101,9 @@ public class HistoryActivity extends BaseActivity implements OnClickListener {
         }
 
         public void onResponse(Call<ApiResponse<List<UpcommingItem>>> call, Response<ApiResponse<List<UpcommingItem>>> response) {
-            HistoryActivity.this.loadNoti.setVisibility(8);
+            HistoryActivity.this.loadNoti.setVisibility(View.GONE);
             if (response.isSuccessful()) {
-                HistoryActivity.this.llNoti.setVisibility(0);
+                HistoryActivity.this.llNoti.setVisibility(View.VISIBLE);
                 int offset = HistoryActivity.this.listOrderItemPages.size();
                 HistoryActivity.this.listOrderItemPages.addAll((Collection) ((ApiResponse) response.body()).getData());
                 HistoryActivity.this.rcvNoti.setSwipeEnable(true);
@@ -126,7 +126,7 @@ public class HistoryActivity extends BaseActivity implements OnClickListener {
         public void onFailure(Call<ApiResponse<List<UpcommingItem>>> call, Throwable t) {
             HistoryActivity.this.rcvNoti.setOnRefreshComplete();
             HistoryActivity.this.rcvNoti.setOnLoadMoreComplete();
-            HistoryActivity.this.loadNoti.setVisibility(8);
+            HistoryActivity.this.loadNoti.setVisibility(View.GONE);
             RLog.m86e(t.getMessage());
         }
     }

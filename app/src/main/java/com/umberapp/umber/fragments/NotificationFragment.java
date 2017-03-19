@@ -164,9 +164,9 @@ public class NotificationFragment extends BaseFragment implements OnClickListene
         }
 
         public void onResponse(Call<ApiResponse<List<NotificationItemPage>>> call, Response<ApiResponse<List<NotificationItemPage>>> response) {
-            NotificationFragment.this.loadNoti.setVisibility(8);
+            NotificationFragment.this.loadNoti.setVisibility(View.GONE);
             if (response.isSuccessful()) {
-                NotificationFragment.this.llNoti.setVisibility(0);
+                NotificationFragment.this.llNoti.setVisibility(View.VISIBLE);
                 int offset = NotificationFragment.this.listNotificationItemPages.size();
                 NotificationFragment.this.listNotificationItemPages.addAll((Collection) ((ApiResponse) response.body()).getData());
                 NotificationFragment.this.rcvNoti.setSwipeEnable(true);
@@ -187,7 +187,7 @@ public class NotificationFragment extends BaseFragment implements OnClickListene
         }
 
         public void onFailure(Call<ApiResponse<List<NotificationItemPage>>> call, Throwable t) {
-            NotificationFragment.this.loadNoti.setVisibility(8);
+            NotificationFragment.this.loadNoti.setVisibility(View.GONE);
             NotificationFragment.this.rcvNoti.setOnRefreshComplete();
             NotificationFragment.this.rcvNoti.setOnLoadMoreComplete();
             RLog.m86e(t.getMessage());

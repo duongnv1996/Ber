@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow android:id="@+id/ll_root" android:background="@color/material_blue_200" android:padding="@dimen/margin_small" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_medium" android:divider="@color/divider"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@+id/tv_lb" android:text="@string/cost_hours" style="@style/TextExpertFragment" />
+    <View android:background="@color/divider" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+    <TextView android:id="@+id/tv_des" android:text="" android:singleLine="false" style="@style/TextExpertFragment" />
+</TableRow>

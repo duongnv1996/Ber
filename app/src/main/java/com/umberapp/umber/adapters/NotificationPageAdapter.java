@@ -135,6 +135,8 @@ public class NotificationPageAdapter extends Adapter<NotificationPageAdapter.Not
             SimpleDateFormat sdf = new SimpleDateFormat(StringUtil.DATE_FORMAT_27);
             sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
             try {
+              long  rangTime = currentTime - sdf.parse("" + BuildConfig.FLAVOR).getTime();
+
                 if (currentTime - sdf.parse(ex.getCreatedAt() + BuildConfig.FLAVOR).getTime() < 3600000) {
                     holder.tvTime.setText(String.format(this.context.getString(R.string.ago), new Object[]{Long.valueOf(rangTime / 60000)}));
                 } else {

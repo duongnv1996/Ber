@@ -192,13 +192,13 @@ public class SettingActivity extends BaseActivity implements OnClickListener, On
             }
 
             protected void onPostExecute(Bitmap[] bitmaps) {
-                SettingActivity.this.progressBar.setVisibility(8);
+                SettingActivity.this.progressBar.setVisibility(View.GONE);
                 SettingActivity.this.mFileAvata = FileUtils.SaveImage(SettingActivity.this, bitmaps[0]);
                 Image image = new Image();
                 image.setPhoto(bitmaps[0]);
                 if (SettingActivity.this.mFileAvata != null && SettingActivity.this.mFileAvata.exists()) {
                     SettingActivity.this.imgAvt.setImageBitmap(Bitmap.createScaledBitmap(bitmaps[0], SettingActivity.RC_SIGN_IN, SettingActivity.RC_SIGN_IN, false));
-                    SettingActivity.this.imgAvt.setVisibility(0);
+                    SettingActivity.this.imgAvt.setVisibility(View.VISIBLE);
                     image.setPath(SettingActivity.this.mFileAvata.getPath());
                 }
             }
@@ -372,6 +372,7 @@ public class SettingActivity extends BaseActivity implements OnClickListener, On
             } catch (GoogleAuthException e2) {
                 e2.printStackTrace();
             }
+            return ace;
         }
 
         protected void onPostExecute(String s) {

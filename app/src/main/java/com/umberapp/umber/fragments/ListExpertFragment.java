@@ -370,7 +370,7 @@ public class ListExpertFragment extends BaseFragment implements OnClickListener 
                 ((MainActivity) getActivity()).removeAllTab();
                 break;
             case R.id.sort_rate /*2131689929*/:
-                this.imgSortDesc.setVisibility(0);
+                this.imgSortDesc.setVisibility(View.VISIBLE);
                 if (this.StartDecs) {
                     this.imgSortDesc.setImageResource(R.drawable.ic_arrow_upward_black_24dp);
                     this.StartDecs = false;
@@ -399,7 +399,7 @@ public class ListExpertFragment extends BaseFragment implements OnClickListener 
                         }
                     });
                 }
-                this.imgSortDesc.setVisibility(8);
+                this.imgSortDesc.setVisibility(View.GONE);
                 this.tvSortGender.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 this.tvSortJob.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 this.tvSortDist.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -422,7 +422,7 @@ public class ListExpertFragment extends BaseFragment implements OnClickListener 
                         }
                     });
                 }
-                this.imgSortDesc.setVisibility(8);
+                this.imgSortDesc.setVisibility(View.GONE);
                 this.tvSortGender.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 this.tvSortPrice.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 this.tvSortJob.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -445,7 +445,7 @@ public class ListExpertFragment extends BaseFragment implements OnClickListener 
                         }
                     });
                 }
-                this.imgSortDesc.setVisibility(8);
+                this.imgSortDesc.setVisibility(View.GONE);
                 this.tvSortJob.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 this.tvSortPrice.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 this.tvSortDist.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -463,7 +463,7 @@ public class ListExpertFragment extends BaseFragment implements OnClickListener 
                 this.tvSortGender.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 this.tvSortPrice.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 this.tvSortDist.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                this.imgSortDesc.setVisibility(8);
+                this.imgSortDesc.setVisibility(View.GONE);
                 break;
         }
         this.mAdapter.notifyDataSetChanged();

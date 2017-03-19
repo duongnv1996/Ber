@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:fab="http://schemas.android.com/apk/res-auto" xmlns:map="http://schemas.android.com/apk/res-auto">
+    <fragment android:name="com.google.android.gms.maps.SupportMapFragment" android:id="@+id/map" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="@dimen/margin_large" android:layout_marginBottom="30.0dip" android:src="@drawable/ico_pin3" />
+            </FrameLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:background="@color/white" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/size_ll_main" android:layout_margin="0.0dip" card_view:paddingStart="0.0dip" card_view:paddingEnd="0.0dip" xmlns:card_view="http://schemas.android.com/apk/res-auto">
+        <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/size_ll_main">
+            <ImageView android:layout_gravity="center" android:id="@+id/btn_search" android:layout_width="@dimen/size_img_form" android:layout_height="@dimen/size_img_form" card_view:srcCompat="@drawable/ic_place_black" />
+            <TextView android:textSize="@dimen/text_s" android:textColor="@color/primary_text" android:gravity="center_vertical" android:id="@+id/myLocation" android:background="@color/white" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/enter_your_address" android:singleLine="true" android:editable="false" android:layout_weight="1.0" android:onClick="onClick" />
+            <ProgressBar android:layout_gravity="center_vertical"
+                android:visibility="gone" android:layout_width="@dimen/size_progressbar" android:layout_height="@dimen/size_progressbar" android:layout_marginRight="@dimen/margin_medium" />
+        </LinearLayout>
+    </LinearLayout>
+    <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/btn_location" android:visibility="visible" android:layout_width="@dimen/size_my_location_bt" android:layout_height="@dimen/size_my_location_bt" android:layout_marginLeft="@dimen/margin_medium" android:layout_marginBottom="@dimen/margin_medium" android:layout_above="@+id/ll_bottom_main" android:onClick="onClick" map:cardCornerRadius="@dimen/radius_main" map:cardElevation="@dimen/elevation_card">
+        <ImageView android:layout_gravity="center"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" map:srcCompat="@drawable/ic_near_me_black_24dp" />
+    </android.support.v7.widget.CardView>
+    <LinearLayout android:orientation="vertical" android:id="@+id/ll_form" android:paddingBottom="@dimen/margin_medium" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_medium" android:layout_marginRight="@dimen/margin_medium" android:layout_marginBottom="@dimen/margin_medium" android:layout_alignParentBottom="true">
+        <android.support.v7.widget.CardView android:gravity="center" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" android:layout_marginRight="@dimen/margin_small" android:layout_marginBottom="@dimen/margin_medium" android:layout_alignParentBottom="true" map:cardCornerRadius="@dimen/radius_main" map:cardElevation="@dimen/elevation_card">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:background="?android:selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="?android:selectableItemBackground" android:onClick="onClick">
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.andexert.library.RippleView android:layout_weight="1.0" map:rv_rippleDuration="200" map:rv_color="@color/white_bg" style="@style/RippleWhiteMin">
+                        <LinearLayout android:id="@+id/schedule" android:focusable="true" android:clickable="true" android:foreground="?android:selectableItemBackground" style="@style/ButtonFormMain">
+                            <ImageView android:layout_width="@dimen/size_img_form" android:layout_height="@dimen/size_img_form" map:srcCompat="@drawable/clock" />
+                            <TextView android:textSize="@dimen/text_s" android:textColor="@color/black"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" android:text="@string/schedule" />
+                        </LinearLayout>
+                    </com.andexert.library.RippleView>
+                    <View android:background="@color/divider" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+                    <com.andexert.library.RippleView android:layout_weight="1.0" map:rv_rippleDuration="200" map:rv_color="@color/white_bg" style="@style/RippleWhiteMin">
+                        <LinearLayout android:gravity="center" android:id="@+id/cash" android:focusable="true" android:clickable="true" android:foreground="?android:selectableItemBackground" style="@style/ButtonFormMain">
+                            <ImageView android:layout_width="@dimen/size_img_form" android:layout_height="@dimen/size_img_form" map:srcCompat="@drawable/credit_card" />
+                            <android.support.v7.widget.AppCompatSpinner android:textSize="@dimen/text_s" android:textColor="@color/black" android:gravity="left"
+                                android:background="@color/white_100" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/cash" />
+                        </LinearLayout>
+                    </com.andexert.library.RippleView>
+                    <View android:background="@color/divider" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+                    <com.andexert.library.RippleView android:layout_weight="1.0" map:rv_rippleDuration="200" map:rv_color="@color/white_bg" style="@style/RippleWhiteMin">
+                        <LinearLayout android:id="@+id/promo" android:focusable="true" android:clickable="true" android:foreground="?android:selectableItemBackground" style="@style/ButtonFormMain">
+                            <ImageView android:layout_width="@dimen/size_img_form" android:layout_height="@dimen/size_img_form" map:srcCompat="@drawable/tag" />
+                            <TextView android:textSize="@dimen/text_s" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" android:text="@string/promo" />
+                        </LinearLayout>
+                    </com.andexert.library.RippleView>
+                </LinearLayout>
+                <View android:background="@color/divider" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+                <com.andexert.library.RippleView android:layout_weight="1.0" map:rv_rippleDuration="200" map:rv_color="@color/white_bg" style="@style/RippleWhiteMin">
+                    <LinearLayout android:gravity="center_vertical" android:id="@+id/edt_txt" android:padding="@dimen/margin_medium" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="?android:selectableItemBackground" android:onClick="onClick">
+                        <ImageView android:layout_width="0.0dip" android:layout_height="@dimen/size_img_form" android:layout_marginLeft="@dimen/margin_medium" android:layout_weight="1.0" map:srcCompat="@drawable/message_processing" />
+                        <TextView android:textSize="@dimen/text_s" android:textColor="@color/black" android:layout_gravity="center"
+                            android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" android:text="@string/your_text_requirements_texts_images_audios" android:singleLine="true" android:layout_weight="9.0" />
+                        <ImageView
+                            android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/size_img_form" android:layout_marginLeft="@dimen/margin_medium" android:layout_weight="1.0" map:srcCompat="@drawable/ic_mic_black_24dp" />
+                        <ImageView
+                            android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/size_img_form" android:layout_marginLeft="@dimen/margin_medium" android:layout_weight="1.0" map:srcCompat="@drawable/ic_panorama_black_24dp" />
+                    </LinearLayout>
+                </com.andexert.library.RippleView>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView android:gravity="center" android:focusable="true" android:visibility="visible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/size_ll_main" android:layout_marginLeft="@dimen/margin_small" android:layout_marginRight="@dimen/margin_small" android:layout_marginBottom="@dimen/margin_medium" android:foreground="?android:selectableItemBackground" android:layout_weight="1.0" android:layout_alignParentBottom="true" android:onClick="onClick" map:cardCornerRadius="@dimen/radius_main" map:cardElevation="@dimen/elevation_card">
+            <com.andexert.library.RippleView android:layout_weight="1.0" map:rv_rippleDuration="200" map:rv_color="@color/white_bg" style="@style/RippleWhiteMin">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/ll_category" android:background="?android:selectableItemBackground" android:layout_width="fill_parent" android:layout_height="@dimen/size_ll_main" android:onClick="onClick">
+                    <ImageView
+                        android:layout_width="@dimen/size_img_form" android:layout_height="@dimen/size_img_form" />
+                    <TextView android:textSize="@dimen/text_s" android:textColor="@color/black" android:textColorHint="@color/black" android:gravity="center" android:id="@+id/tv_category" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" android:hint="@string/hey_which_expert_do_you_need" />
+                </LinearLayout>
+            </com.andexert.library.RippleView>
+        </android.support.v7.widget.CardView>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/ll_cancel" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" android:layout_marginRight="@dimen/margin_small" android:layout_marginBottom="@dimen/margin_medium" android:foreground="?android:selectableItemBackground" android:layout_weight="1.0" android:onClick="onClick" map:cardBackgroundColor="@color/colorAccent" map:cardCornerRadius="@dimen/size_radius_card" map:cardElevation="@dimen/elevation_card">
+                <TextView android:textSize="@dimen/text_large" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center" android:padding="@dimen/margin_medium" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/cancel" android:textAllCaps="true" />
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/ll_book_now" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" android:layout_marginRight="@dimen/margin_small" android:layout_marginBottom="@dimen/margin_medium" android:foreground="?android:selectableItemBackground" android:layout_weight="1.0" android:onClick="onClick" map:cardBackgroundColor="@color/colorPrimary" map:cardCornerRadius="@dimen/size_radius_card" map:cardElevation="@dimen/elevation_card">
+                <TextView android:textSize="@dimen/text_large" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center"
+                    android:padding="@dimen/margin_medium" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/book_now" />
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@+id/btn_pannic" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginBottom="@dimen/margin_medium" android:src="@drawable/panic_button" android:layout_above="@+id/ll_bottom_main" android:layout_alignRight="@+id/ll_bottom_main" android:onClick="onClick" />
+    <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/ll_bottom_main" android:background="?android:selectableItemBackground" android:focusable="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/size_ll_main" android:layout_marginLeft="@dimen/margin_medium" android:layout_marginRight="@dimen/margin_medium" android:layout_marginBottom="46.0dip" android:foreground="?android:selectableItemBackground" android:layout_toRightOf="@+id/ll_form" android:layout_alignParentBottom="true" map:cardCornerRadius="2.0dip" map:cardElevation="@dimen/elevation_card">
+        <com.andexert.library.RippleView
+            map:rv_rippleDuration="200" map:rv_color="@color/white_bg" style="@style/RippleWhiteMax">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/linear_bottom_main" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/size_ll_main" android:foreground="?android:selectableItemBackground" android:onClick="onClick">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:tint="@color/black" map:srcCompat="@drawable/ic_search" />
+                    <TextView android:textSize="@dimen/text_medium" android:textColor="@color/black" android:textColorHint="@color/black" android:gravity="center" android:id="@+id/edt_catelogy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="@string/hey_which_expert_do_you_need" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.andexert.library.RippleView>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/ll_bottom_back" android:background="?android:selectableItemBackground" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/size_ll_main" android:layout_marginLeft="@dimen/margin_large" android:layout_marginRight="@dimen/margin_large" android:layout_marginBottom="41.0dip" android:foreground="?android:selectableItemBackground" android:layout_toRightOf="@+id/ll_form" android:layout_alignParentBottom="true" map:cardCornerRadius="@dimen/size_radius_card" map:cardElevation="@dimen/elevation_card">
+        <com.andexert.library.RippleView map:rv_rippleDuration="200" map:rv_color="@color/white_bg" style="@style/RippleWhiteMax">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/linear_bottom_back" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/size_ll_main" android:foreground="?android:selectableItemBackground" android:onClick="onClick">
+                <TextView android:textSize="@dimen/text_medium" android:textColor="@color/colorPrimary" android:textColorHint="@color/colorPrimary" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="@string/back" />
+            </LinearLayout>
+        </com.andexert.library.RippleView>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

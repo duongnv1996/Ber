@@ -195,7 +195,7 @@ public class AlertDialogCustom {
 
         public void onClick(View view) {
             this.val$listView.setVisibility(4);
-            this.val$load.setVisibility(0);
+            this.val$load.setVisibility(View.VISIBLE);
             this.val$tvEmpty.setVisibility(4);
             String token = SharedPref.getInstance(this.val$context).getString(Constant.KEY_TOKEN, BuildConfig.FLAVOR);
             String lang = SharedPref.getInstance(this.val$context).getString("lang", "en");
@@ -573,7 +573,7 @@ public class AlertDialogCustom {
 
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             if (charSequence.length() > 0) {
-                this.val$progressBar.setVisibility(0);
+                this.val$progressBar.setVisibility(View.VISIBLE);
                 this.val$umberService.verifyPromotionCode(AppController.getInstance().getUser().getToken(), charSequence.toString(), "promotion").enqueue(new C14551());
             }
         }
@@ -1639,8 +1639,8 @@ public class AlertDialogCustom {
         stringCost.add("$$$");
         stringCost.add("$$$$");
         stringCost.add("$$$$$");
-        SpinnerAdapter adapterCost = new ArrayAdapter(context, 17367043, stringCost);
-        adapterCost.setDropDownViewResource(17367050);
+        ArrayAdapter adapterCost = new ArrayAdapter(context, android.R.layout.simple_list_item_1, stringCost);
+        adapterCost.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spiner.setAdapter(adapterCost);
         if (hic.getCostHci() == null) {
             spiner.setSelection(0);

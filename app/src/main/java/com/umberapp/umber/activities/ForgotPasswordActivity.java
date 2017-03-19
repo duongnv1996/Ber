@@ -64,17 +64,17 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
                     ForgotPasswordActivity.this.resetPass(this.val$username);
                     return;
                 }
-                ForgotPasswordActivity.this.mProgress.setVisibility(8);
+                ForgotPasswordActivity.this.mProgress.setVisibility(View.GONE);
                 AlertDialogCustom.dialogMsg(ForgotPasswordActivity.this, ForgotPasswordActivity.this.getString(R.string.exist_auth)).show();
                 return;
             }
-            ForgotPasswordActivity.this.mProgress.setVisibility(8);
+            ForgotPasswordActivity.this.mProgress.setVisibility(View.GONE);
             RLog.m86e("Check user -" + response.code());
             AlertDialogCustom.dialogMsg(ForgotPasswordActivity.this, ForgotPasswordActivity.this.getString(R.string.unknow_error)).show();
         }
 
         public void onFailure(Call<ApiResponse<CheckResponse>> call, Throwable t) {
-            ForgotPasswordActivity.this.mProgress.setVisibility(8);
+            ForgotPasswordActivity.this.mProgress.setVisibility(View.GONE);
             RLog.m86e("Check user -" + t.getMessage());
             AlertDialogCustom.dialogMsg(ForgotPasswordActivity.this, ForgotPasswordActivity.this.getString(R.string.unknow_error)).show();
         }
@@ -99,7 +99,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
                     new Builder(this).title((int) R.string.missing_data).content((int) R.string.please_enter_email).show();
                     return;
                 }
-                this.mProgress.setVisibility(0);
+                this.mProgress.setVisibility(View.VISIBLE);
                 checkEmail(email);
             default:
         }
@@ -115,6 +115,6 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
 
     protected void onResume() {
         super.onResume();
-        this.mProgress.setVisibility(8);
+        this.mProgress.setVisibility(View.GONE);
     }
 }

@@ -114,7 +114,7 @@ public class ApiUtils {
                 }
                 throw th;
             }
-        } catch (IOException e3) {
+        } catch (Throwable e3) {
             return null;
         }
     }

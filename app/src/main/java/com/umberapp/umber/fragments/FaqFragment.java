@@ -75,9 +75,9 @@ public class FaqFragment extends BaseFragment implements OnClickListener {
         }
 
         public void onResponse(Call<ApiResponse<List<FaqItem>>> call, Response<ApiResponse<List<FaqItem>>> response) {
-            FaqFragment.this.loadNoti.setVisibility(8);
+            FaqFragment.this.loadNoti.setVisibility(View.GONE);
             if (response.isSuccessful()) {
-                FaqFragment.this.llNoti.setVisibility(0);
+                FaqFragment.this.llNoti.setVisibility(View.VISIBLE);
                 int offset = FaqFragment.this.listNotificationItemPages.size();
                 FaqFragment.this.listNotificationItemPages.addAll((Collection) ((ApiResponse) response.body()).getData());
                 FaqFragment.this.rcvNoti.setLayoutManager(new LinearLayoutManager(FaqFragment.this.getContext()));
@@ -93,7 +93,7 @@ public class FaqFragment extends BaseFragment implements OnClickListener {
         }
 
         public void onFailure(Call<ApiResponse<List<FaqItem>>> call, Throwable t) {
-            FaqFragment.this.loadNoti.setVisibility(8);
+            FaqFragment.this.loadNoti.setVisibility(View.GONE);
             RLog.m86e(t.getMessage());
         }
     }

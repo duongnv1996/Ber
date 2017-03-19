@@ -7,11 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.tokenautocomplete.TokenCompleteTextView;
 import com.umberapp.umber.R;
 import com.umberapp.umber.models.Tag;
-
-public class TagCompleteTextView extends TokenCompleteTextView<Tag> {
+//// TODO: 3/19/2017  change token to view
+public class TagCompleteTextView extends View {
     public TagCompleteTextView(Context context) {
         super(context);
     }

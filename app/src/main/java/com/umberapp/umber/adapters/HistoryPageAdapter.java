@@ -80,15 +80,17 @@ public class HistoryPageAdapter extends Adapter<HistoryPageAdapter.NotitHolder> 
         if (holder != null) {
             UpcommingItem ex = (UpcommingItem) this.listEx.get(position);
             holder.tvTitle.setText(ex.getAddress());
+            long rangTime;
             String str = BuildConfig.FLAVOR;
-            String strTime = ex.getUpdatedAt().replace("T", " ").replace("Z", r16);
+            String strTime = ex.getUpdatedAt().replace("T", " ").replace("Z", "");
             holder.tvStatus.setText(ApiUtils.getStatusFromServer(ex.getStatus(), this.context));
             long currentTime = CommonUtils.getUTCTime();
             SimpleDateFormat sdf = new SimpleDateFormat(StringUtil.DATE_FORMAT_27);
             sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
             try {
                 str = ex.getCreatedAt();
-                if (currentTime - sdf.parse(r16 + BuildConfig.FLAVOR).getTime() < 3600000) {
+                rangTime = currentTime - sdf.parse("" + BuildConfig.FLAVOR).getTime();
+                if (currentTime - sdf.parse("" + BuildConfig.FLAVOR).getTime() < 3600000) {
                     holder.tvTime.setText(String.format(this.context.getString(R.string.ago), new Object[]{Long.valueOf(rangTime / 60000)}));
                 } else {
                     String formattedTime = new SimpleDateFormat("HH:mm MM/dd/yyyy").format(sdf.parse(ex.getCreatedAt()));

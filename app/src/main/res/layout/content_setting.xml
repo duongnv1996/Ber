@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_gravity="center" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="10.0dip">
+            <de.hdodenhof.circleimageview.CircleImageView android:layout_gravity="bottom|center" android:id="@+id/profilePic" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/background" android:onClick="onClick" />
+            <ProgressBar android:layout_gravity="center" android:id="@+id/progress" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+            <ImageView android:layout_gravity="center|right|top" android:id="@+id/ic_category" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="70.0dip" app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/text_large" android:textColor="@color/black" android:layout_gravity="center" android:id="@+id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_small" android:text="" />
+        <TextView android:textSize="@dimen/text_medium" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_small" />
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:padding="@dimen/margin_medium" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView app:srcCompat="@drawable/ic_account_circle_black" style="@style/ImageRegisterAcc" />
+                    <android.support.design.widget.TextInputLayout android:textColorHint="@color/secondary_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" style="@style/LinnertLayoutStyleSetting">
+                        <EditText android:enabled="false"
+                            android:hint="@string/username" style="@style/EdtSetting" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutItemReg">
+                    <ImageView app:srcCompat="@drawable/ic_face_black" style="@style/ImageRegisterAcc" />
+                    <android.support.design.widget.TextInputLayout style="@style/LinnertLayoutStyleSetting">
+                        <EditText
+                            android:hint="@string/firstname" android:inputType="textCapSentences" style="@style/EdtSetting" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutItemReg">
+                    <ImageView android:visibility="invisible" app:srcCompat="@drawable/ic_account_circle_black_24dp" style="@style/ImageRegisterAcc" />
+                    <android.support.design.widget.TextInputLayout style="@style/LinnertLayoutStyleSetting">
+                        <EditText
+                            android:hint="@string/lastname" android:inputType="textCapSentences" style="@style/EdtSetting" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutItemReg">
+                    <ImageView app:srcCompat="@drawable/ic_place_black" style="@style/ImageRegisterAcc" />
+                    <android.support.design.widget.TextInputLayout style="@style/LinnertLayoutStyleSetting">
+                        <EditText android:id="@+id/edt_address" android:focusable="false" android:clickable="true" android:hint="@string/address" android:editable="false" android:onClick="onClick" style="@style/EdtSetting" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutItemReg">
+                    <ImageView app:srcCompat="@drawable/ic_mail_black" style="@style/ImageRegisterAcc" />
+                    <android.support.design.widget.TextInputLayout style="@style/LinnertLayoutStyleSetting">
+                        <EditText android:enabled="false"
+                            android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/edt_email" style="@style/EdtSetting" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutItemReg">
+                    <ImageView app:srcCompat="@drawable/ic_local_phone_black" style="@style/ImageRegisterAcc" />
+                    <android.support.design.widget.TextInputLayout style="@style/LinnertLayoutStyleSetting">
+                        <EditText android:enabled="false"
+                            android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/sdt" android:inputType="number" style="@style/EdtSetting" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutItemReg">
+                    <ImageView app:srcCompat="@drawable/ic_today_black" style="@style/ImageRegisterAcc" />
+                    <android.support.design.widget.TextInputLayout android:textColorHint="@color/secondary_text"
+                        android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:editable="false" android:onClick="onClick">
+                        <EditText android:textSize="@dimen/text_medium" android:textColor="@color/black" android:textColorHint="@color/black" android:id="@+id/edt_birth" android:focusable="false" android:clickable="true" android:layout_width="279.0dip" android:layout_height="wrap_content" android:hint="@string/birth" android:singleLine="true" android:editable="false" android:inputType="date" android:onClick="onClick" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutItemReg">
+                    <ImageView app:srcCompat="@drawable/ic_wc_black" style="@style/ImageRegisterAcc" />
+                    <android.support.design.widget.TextInputLayout android:hint="@string/gender" style="@style/LinnertLayoutStyleSetting">
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_small">
+                    <ImageView android:id="@+id/fb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/margin_medium" android:text="@string/signup" android:onClick="onClick" app:srcCompat="@drawable/ic_facebook" />
+                    <ImageView android:id="@+id/ins" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/margin_medium" android:text="@string/signup" android:onClick="onClick" app:srcCompat="@drawable/ic_instagram_50" />
+                    <ImageView android:id="@+id/gg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/margin_medium" android:text="@string/signup" android:onClick="onClick" app:srcCompat="@drawable/ic_google_plus" />
+                </LinearLayout>
+                <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/ll_ok" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_large" android:layout_marginTop="@dimen/margin_medium" android:layout_marginRight="@dimen/margin_large" android:layout_marginBottom="@dimen/margin_small" android:foreground="?android:selectableItemBackground" android:layout_weight="1.0" android:onClick="onClick" app:cardBackgroundColor="@color/colorPrimary" app:cardCornerRadius="@dimen/size_radius_card" app:cardElevation="@dimen/elevation_card">
+                    <TextView android:textSize="@dimen/text_large" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center"
+                        android:padding="@dimen/margin_medium" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/save" android:textAllCaps="true" />
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>

@@ -2,176 +2,216 @@ package com.umberapp.umber.models;
 
 import java.util.List;
 
-public class OrderItem {
-    String address;
-    String audio;
-    String category;
-    double[] coordinates;
-    String createdAt;
-    String customer;
-    long dateBooking;
-    List<String> experts;
-    List<String> expertsFinding;
-    String hasSend;
-    String id;
-    String invoice;
-    String payment;
-    List<Picture> pictures;
-    String promotion;
-    RangeTime rangeTime;
-    String status;
-    List<Tag> tags;
-    String updatedAt;
-
-    public String getPayment() {
-        return this.payment;
-    }
-
-    public void setPayment(String payment) {
-        this.payment = payment;
-    }
-
-    public double[] getCoordinates() {
-        return this.coordinates;
-    }
-
-    public void setCoordinates(double[] coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public String getPromotion() {
-        return this.promotion;
-    }
-
-    public void setPromotion(String promotion) {
-        this.promotion = promotion;
-    }
-
-    public String getCreatedAt() {
-        return this.createdAt;
-    }
-
-    public void setCreatedAt(String createAt) {
-        this.createdAt = createAt;
-    }
-
-    public String getUpdatedAt() {
-        return this.updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getAudio() {
-        return this.audio;
-    }
-
-    public void setAudio(String audio) {
-        this.audio = audio;
-    }
-
-    public List<String> getExpertsFinding() {
-        return this.expertsFinding;
-    }
-
-    public void setExpertsFinding(List<String> expertsFinding) {
-        this.expertsFinding = expertsFinding;
-    }
-
-    public String getHasSend() {
-        return this.hasSend;
-    }
-
-    public void setHasSend(String hasSend) {
-        this.hasSend = hasSend;
-    }
-
-    public String getInvoice() {
-        return this.invoice;
-    }
-
-    public void setInvoice(String invoice) {
-        this.invoice = invoice;
-    }
-
-    public String getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAddress() {
-        return this.address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCategory() {
-        return this.category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getCustomer() {
-        return this.customer;
-    }
-
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    }
-
-    public long getDateBooking() {
-        return this.dateBooking;
-    }
-
-    public void setDateBooking(long dateBooking) {
-        this.dateBooking = dateBooking;
-    }
-
-    public List<String> getExperts() {
-        return this.experts;
-    }
-
-    public void setExperts(List<String> experts) {
-        this.experts = experts;
-    }
-
-    public List<Picture> getPictures() {
-        return this.pictures;
-    }
-
-    public void setPictures(List<Picture> pictures) {
-        this.pictures = pictures;
-    }
-
-    public RangeTime getRangeTime() {
-        return this.rangeTime;
-    }
-
-    public void setRangeTime(RangeTime rangeTime) {
-        this.rangeTime = rangeTime;
-    }
-
-    public List<Tag> getTags() {
-        return this.tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
+public class OrderItem
+{
+  String address;
+  String audio;
+  String category;
+  double[] coordinates;
+  String createdAt;
+  String customer;
+  long dateBooking;
+  List<String> experts;
+  List<String> expertsFinding;
+  String hasSend;
+  String id;
+  String invoice;
+  String payment;
+  List<Picture> pictures;
+  String promotion;
+  RangeTime rangeTime;
+  String status;
+  List<Tag> tags;
+  String updatedAt;
+  
+  public String getAddress()
+  {
+    return this.address;
+  }
+  
+  public String getAudio()
+  {
+    return this.audio;
+  }
+  
+  public String getCategory()
+  {
+    return this.category;
+  }
+  
+  public double[] getCoordinates()
+  {
+    return this.coordinates;
+  }
+  
+  public String getCreatedAt()
+  {
+    return this.createdAt;
+  }
+  
+  public String getCustomer()
+  {
+    return this.customer;
+  }
+  
+  public long getDateBooking()
+  {
+    return this.dateBooking;
+  }
+  
+  public List<String> getExperts()
+  {
+    return this.experts;
+  }
+  
+  public List<String> getExpertsFinding()
+  {
+    return this.expertsFinding;
+  }
+  
+  public String getHasSend()
+  {
+    return this.hasSend;
+  }
+  
+  public String getId()
+  {
+    return this.id;
+  }
+  
+  public String getInvoice()
+  {
+    return this.invoice;
+  }
+  
+  public String getPayment()
+  {
+    return this.payment;
+  }
+  
+  public List<Picture> getPictures()
+  {
+    return this.pictures;
+  }
+  
+  public String getPromotion()
+  {
+    return this.promotion;
+  }
+  
+  public RangeTime getRangeTime()
+  {
+    return this.rangeTime;
+  }
+  
+  public String getStatus()
+  {
+    return this.status;
+  }
+  
+  public List<Tag> getTags()
+  {
+    return this.tags;
+  }
+  
+  public String getUpdatedAt()
+  {
+    return this.updatedAt;
+  }
+  
+  public void setAddress(String paramString)
+  {
+    this.address = paramString;
+  }
+  
+  public void setAudio(String paramString)
+  {
+    this.audio = paramString;
+  }
+  
+  public void setCategory(String paramString)
+  {
+    this.category = paramString;
+  }
+  
+  public void setCoordinates(double[] paramArrayOfDouble)
+  {
+    this.coordinates = paramArrayOfDouble;
+  }
+  
+  public void setCreatedAt(String paramString)
+  {
+    this.createdAt = paramString;
+  }
+  
+  public void setCustomer(String paramString)
+  {
+    this.customer = paramString;
+  }
+  
+  public void setDateBooking(long paramLong)
+  {
+    this.dateBooking = paramLong;
+  }
+  
+  public void setExperts(List<String> paramList)
+  {
+    this.experts = paramList;
+  }
+  
+  public void setExpertsFinding(List<String> paramList)
+  {
+    this.expertsFinding = paramList;
+  }
+  
+  public void setHasSend(String paramString)
+  {
+    this.hasSend = paramString;
+  }
+  
+  public void setId(String paramString)
+  {
+    this.id = paramString;
+  }
+  
+  public void setInvoice(String paramString)
+  {
+    this.invoice = paramString;
+  }
+  
+  public void setPayment(String paramString)
+  {
+    this.payment = paramString;
+  }
+  
+  public void setPictures(List<Picture> paramList)
+  {
+    this.pictures = paramList;
+  }
+  
+  public void setPromotion(String paramString)
+  {
+    this.promotion = paramString;
+  }
+  
+  public void setRangeTime(RangeTime paramRangeTime)
+  {
+    this.rangeTime = paramRangeTime;
+  }
+  
+  public void setStatus(String paramString)
+  {
+    this.status = paramString;
+  }
+  
+  public void setTags(List<Tag> paramList)
+  {
+    this.tags = paramList;
+  }
+  
+  public void setUpdatedAt(String paramString)
+  {
+    this.updatedAt = paramString;
+  }
 }
+

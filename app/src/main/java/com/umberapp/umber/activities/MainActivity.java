@@ -31,6 +31,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -87,9 +88,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.squareup.picasso.Picasso;
 import com.sromku.simple.fb.entities.Feed.Builder.Parameters;
-import com.tokenautocomplete.FilteredArrayAdapter;
-import com.tokenautocomplete.TokenCompleteTextView.TokenClickStyle;
-import com.tokenautocomplete.TokenCompleteTextView.TokenListener;
+
 import com.tooltip.OnDismissListener;
 import com.tooltip.Tooltip;
 
@@ -154,7 +153,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import io.socket.emitter.Emitter.Listener;
-import me.iwf.photopicker.R;
+
 import me.iwf.photopicker.PhotoPicker;
 import me.zhanghai.android.materialprogressbar.BuildConfig;
 import okhttp3.MediaType;
@@ -164,6 +163,8 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import com.umberapp.umber.R;
 
 public class MainActivity extends BaseActivity implements OnNavigationItemSelectedListener, OnClickListener, OnMapReadyCallback, UploadList {
     private static final LatLngBounds BOUNDS_GREATER_SYDNEY;
@@ -361,7 +362,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         public void onFailure(Call<ApiResponse<String>> call, Throwable t) {
             RLog.m86e("error upload audio" + t.getMessage());
             MainActivity.this.uploadPhoto(this.val$order);
-            Toast.makeText(MainActivity.this, MainActivity.this.getString(R.string.unknow_error_upload),Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, MainActivity.this.getString(R.string.unknow_error_upload), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -379,7 +380,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
             try {
                 if (!response.isSuccessful()) {
                     RLog.m86e(Integer.valueOf(response.code()));
-                    Toast.makeText(MainActivity.this, MainActivity.this.getString(R.string.unknow_error_upload),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, MainActivity.this.getString(R.string.unknow_error_upload), Toast.LENGTH_SHORT).show();
                     MainActivity.this.sendOrder(this.val$order);
                 } else if (((ApiResponse) response.body()).getData() != null) {
                     Picture pic = new Picture();
@@ -419,7 +420,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
             } catch (GooglePlayServicesRepairableException e) {
                 GooglePlayServicesUtil.getErrorDialog(e.getConnectionStatusCode(), MainActivity.this, MainActivity.STATE_NOMAL);
             } catch (GooglePlayServicesNotAvailableException e2) {
-                Toast.makeText(MainActivity.this, "Google Play Services is not available.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Google Play Services is not available.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -470,7 +471,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         }
 
         public void onClick(View view) {
-            this.val$llMedia.setVisibility(4);
+            this.val$llMedia.setVisibility(View.INVISIBLE);
             this.val$btnStopRecord.setEnabled(false);
             this.val$btnStartRecord.setEnabled(true);
             MainActivity.mFileName = null;
@@ -509,126 +510,127 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
     }
 
     /* renamed from: com.umberapp.umber.activities.MainActivity.48 */
-    class AnonymousClass48 implements TextWatcher {
-        final /* synthetic */ TagCompleteTextView val$edt;
-
-        /* renamed from: com.umberapp.umber.activities.MainActivity.48.1 */
-        class C13461 implements Callback<ApiResponse<List<Tag>>> {
-            final /* synthetic */ String val$search;
-
-            /* renamed from: com.umberapp.umber.activities.MainActivity.48.1.1 */
-            class C13431 extends FilteredArrayAdapter<Tag> {
-                C13431(Context x0, int x1, List x2) {
-                    super(x0, x1, x2);
-                }
-
-                public View getView(int position, View convertView, ViewGroup parent) {
-                    if (convertView == null) {
-                        convertView = ((LayoutInflater) getContext().getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.person_layout, parent, false);
-                    }
-                    ((TextView) convertView.findViewById(R.id.name)).setText(((Tag) getItem(position)).getText());
-                    return convertView;
-                }
-
-                protected boolean keepObject(Tag person, String mask) {
-                    mask = mask.toLowerCase();
-                    return person.getText().toLowerCase().startsWith(mask) || person.getText().toLowerCase().startsWith(mask);
-                }
-            }
-
-            /* renamed from: com.umberapp.umber.activities.MainActivity.48.1.2 */
-            class C13442 implements TokenListener<Tag> {
-                C13442() {
-                }
-
-                public void onTokenAdded(Tag token) {
-                    MainActivity.this.postTag(token.getText());
-                }
-
-                public void onTokenRemoved(Tag token) {
-                }
-            }
-
-            /* renamed from: com.umberapp.umber.activities.MainActivity.48.1.3 */
-            class C13453 extends FilteredArrayAdapter<Tag> {
-                C13453(Context x0, int x1, List x2) {
-                    super(x0, x1, x2);
-                }
-
-                public View getView(int position, View convertView, ViewGroup parent) {
-                    if (convertView == null) {
-                        convertView = ((LayoutInflater) getContext().getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.person_layout, parent, false);
-                    }
-                    ((TextView) convertView.findViewById(R.id.name)).setText(((Tag) getItem(position)).getText());
-                    return convertView;
-                }
-
-                protected boolean keepObject(Tag person, String mask) {
-                    mask = mask.toLowerCase();
-                    return person.getText().toLowerCase().startsWith(mask) || person.getText().toLowerCase().startsWith(mask);
-                }
-            }
-
-            C13461(String str) {
-                this.val$search = str;
-            }
-
-            public void onResponse(Call<ApiResponse<List<Tag>>> call, Response<ApiResponse<List<Tag>>> response) {
-                if (response.isSuccessful()) {
-                    List<Tag> listTags = (List) ((ApiResponse) response.body()).getData();
-                    listTags.add(MainActivity.STATE_NOMAL, new Tag(this.val$search));
-                    if (listTags != null && listTags.size() > 0) {
-                        ArrayAdapter<Tag> adapter = new C13431(MainActivity.this, R.layout.person_layout, listTags);
-                        adapter.setDropDownViewResource(17367050);
-                        AnonymousClass48.this.val$edt.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
-                        AnonymousClass48.this.val$edt.setTokenClickStyle(TokenClickStyle.None);
-                        AnonymousClass48.this.val$edt.allowCollapse(false);
-                        AnonymousClass48.this.val$edt.setTokenListener(new C13442());
-                    }
-                }
-            }
-
-            public void onFailure(Call<ApiResponse<List<Tag>>> call, Throwable t) {
-                RLog.m86e("error " + t.getMessage());
-                List<Tag> listTags = new ArrayList();
-                listTags.add(MainActivity.STATE_NOMAL, new Tag(this.val$search));
-                if (listTags != null && listTags.size() > 0) {
-                    ArrayAdapter<Tag> adapter = new C13453(MainActivity.this, R.layout.person_layout, listTags);
-                    adapter.setDropDownViewResource(17367050);
-                    AnonymousClass48.this.val$edt.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-                    AnonymousClass48.this.val$edt.setTokenClickStyle(TokenClickStyle.None);
-                    AnonymousClass48.this.val$edt.allowCollapse(false);
-                }
-            }
-        }
-
-        AnonymousClass48(TagCompleteTextView tagCompleteTextView) {
-            this.val$edt = tagCompleteTextView;
-        }
-
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        }
-
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            if (charSequence.length() > 0) {
-                String search;
-                String[] strings = charSequence.toString().split(",");
-                if (strings.length == 0) {
-                    search = " " + charSequence.toString();
-                } else {
-                    search = " " + strings[strings.length - 1].trim();
-                }
-                RLog.m86e("will search " + search);
-                MainActivity.this.mUmberService.getTags(AppController.getInstance().getUser().getToken(), search, MainActivity.this.mCategory != null ? MainActivity.this.mCategory.getId() : BuildConfig.FLAVOR).enqueue(new C13461(search));
-            }
-        }
-
-        public void afterTextChanged(Editable editable) {
-        }
-    }
-
+//    class AnonymousClass48 implements TextWatcher {
+//        final /* synthetic */ TagCompleteTextView val$edt;
+//
+//        /* renamed from: com.umberapp.umber.activities.MainActivity.48.1 */
+//        class C13461 implements Callback<ApiResponse<List<Tag>>> {
+//            final /* synthetic */ String val$search;
+//
+//            /* renamed from: com.umberapp.umber.activities.MainActivity.48.1.1 */
+//            class C13431 extends FilteredArrayAdapter<Tag> {
+//                C13431(Context x0, int x1, List x2) {
+//                    super(x0, x1, x2);
+//                }
+//
+//                public View getView(int position, View convertView, ViewGroup parent) {
+//                    if (convertView == null) {
+//                        convertView = ((LayoutInflater) getContext().getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.person_layout, parent, false);
+//                    }
+//                    ((TextView) convertView.findViewById(R.id.name)).setText(((Tag) getItem(position)).getText());
+//                    return convertView;
+//                }
+//
+//                protected boolean keepObject(Tag person, String mask) {
+//                    mask = mask.toLowerCase();
+//                    return person.getText().toLowerCase().startsWith(mask) || person.getText().toLowerCase().startsWith(mask);
+//                }
+//            }
+//
+//            /* renamed from: com.umberapp.umber.activities.MainActivity.48.1.2 */
+//            class C13442 implements TokenCompleteTextView.TokenListener<Tag> {
+//                C13442() {
+//                }
+//
+//                public void onTokenAdded(Tag token) {
+//                    MainActivity.this.postTag(token.getText());
+//                }
+//
+//                public void onTokenRemoved(Tag token) {
+//                }
+//            }
+//
+//            /* renamed from: com.umberapp.umber.activities.MainActivity.48.1.3 */
+//            class C13453 extends FilteredArrayAdapter<Tag> {
+//                C13453(Context x0, int x1, List x2) {
+//                    super(x0, x1, x2);
+//                }
+//
+//                public View getView(int position, View convertView, ViewGroup parent) {
+//                    if (convertView == null) {
+//                        convertView = ((LayoutInflater) getContext().getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.person_layout, parent, false);
+//                    }
+//                    ((TextView) convertView.findViewById(R.id.name)).setText(((Tag) getItem(position)).getText());
+//                    return convertView;
+//                }
+//
+//                protected boolean keepObject(Tag person, String mask) {
+//                    mask = mask.toLowerCase();
+//                    return person.getText().toLowerCase().startsWith(mask) || person.getText().toLowerCase().startsWith(mask);
+//                }
+//            }
+//
+//            C13461(String str) {
+//                this.val$search = str;
+//            }
+//
+//            public void onResponse(Call<ApiResponse<List<Tag>>> call, Response<ApiResponse<List<Tag>>> response) {
+//                if (response.isSuccessful()) {
+//                    List<Tag> listTags = (List) ((ApiResponse) response.body()).getData();
+//                    listTags.add(MainActivity.STATE_NOMAL, new Tag(this.val$search));
+//                    if (listTags != null && listTags.size() > 0) {
+//                        ArrayAdapter<Tag> adapter = new C13431(MainActivity.this, R.layout.person_layout, listTags);
+//                        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+//                        //// TODO: 3/19/2017 error tag
+////                        AnonymousClass48.this.val$edt.setAdapter(adapter);
+////                        adapter.notifyDataSetChanged();
+////                        AnonymousClass48.this.val$edt.setTokenClickStyle(TokenClickStyle.None);
+////                        AnonymousClass48.this.val$edt.allowCollapse(false);
+////                        AnonymousClass48.this.val$edt.setTokenListener(new C13442());
+//                    }
+//                }
+//            }
+//
+//            public void onFailure(Call<ApiResponse<List<Tag>>> call, Throwable t) {
+//                RLog.m86e("error " + t.getMessage());
+//                List<Tag> listTags = new ArrayList();
+//                listTags.add(MainActivity.STATE_NOMAL, new Tag(this.val$search));
+//                if (listTags != null && listTags.size() > 0) {
+//                    ArrayAdapter<Tag> adapter = new C13453(MainActivity.this, R.layout.person_layout, listTags);
+//                    adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+////                    AnonymousClass48.this.val$edt.setAdapter(adapter);
+////                    adapter.notifyDataSetChanged();
+////                    AnonymousClass48.this.val$edt.setTokenClickStyle(TokenClickStyle.None);
+////                    AnonymousClass48.this.val$edt.allowCollapse(false);       // TODO: 3/19/2017  comment case error tag
+//                }
+//            }
+//        }
+//
+//        AnonymousClass48(TagCompleteTextView tagCompleteTextView) {
+//            this.val$edt = tagCompleteTextView;
+//        }
+//
+//        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//        }
+//
+//        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//            if (charSequence.length() > 0) {
+//                String search;
+//                String[] strings = charSequence.toString().split(",");
+//                if (strings.length == 0) {
+//                    search = " " + charSequence.toString();
+//                } else {
+//                    search = " " + strings[strings.length - 1].trim();
+//                }
+//                RLog.m86e("will search " + search);
+//                MainActivity.this.mUmberService.getTags(AppController.getInstance().getUser().getToken(), search, MainActivity.this.mCategory != null ? MainActivity.this.mCategory.getId() : BuildConfig.FLAVOR).enqueue(new C13461(search));
+//            }
+//        }
+//
+//        public void afterTextChanged(Editable editable) {
+//        }
+//    }
+// TODO: 3/19/2017 comment cause error tag
     /* renamed from: com.umberapp.umber.activities.MainActivity.49 */
     class AnonymousClass49 implements OnClickListener {
         final /* synthetic */ Dialog val$dialog;
@@ -641,7 +643,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
 
         public void onClick(View view) {
             MainActivity.this.stringTag.clear();
-            MainActivity.this.stringTag.addAll(this.val$edt.getObjects());
+//            MainActivity.this.stringTag.addAll(this.val$edt.getObjects());        //todo comment cause error tag
             MainActivity.this.msgForm = BuildConfig.FLAVOR;
             for (Tag tag : MainActivity.this.stringTag) {
                 MainActivity.this.msgForm = MainActivity.this.msgForm + tag.getText() + ",";
@@ -668,7 +670,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         }
 
         public void needWritePermission() {
-            Toast.makeText(MainActivity.this, R.string.permission_message, MainActivity.STATE_NOMAL).show();
+            Toast.makeText(MainActivity.this, R.string.permission_message, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -1017,13 +1019,13 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         if (count > 0) {
             this.tvCountNoti.setVisibility(View.VISIBLE);
         } else if (count == 0) {
-            this.tvCountNoti.setVisibility(8);
+            this.tvCountNoti.setVisibility(View.GONE);
         }
     }
 
     public void readAllNotify() {
-        this.tvCountNotification.setVisibility(8);
-        this.tvCountNoti.setVisibility(8);
+        this.tvCountNotification.setVisibility(View.GONE);
+        this.tvCountNoti.setVisibility(View.GONE);
     }
 
     void trackExpert(String s, String s1) {
@@ -1061,12 +1063,12 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         this.pickerBtn.setOnClickListener(new C13413());
         this.tvCountNoti = (ImageView) MenuItemCompat.getActionView(navigationView.getMenu().findItem(R.id.nav_notifi));
         LayoutParams p = new LayoutParams(-2, -2);
-        p.gravity = 16;
+        p.gravity = Gravity.CENTER_VERTICAL;
         p.setMargins(STATE_NOMAL, 50, STATE_NOMAL, STATE_NOMAL);
         this.tvCountNoti.setPadding(STATE_NOMAL, 50, STATE_NOMAL, STATE_NOMAL);
         this.tvCountNoti.setImageResource(R.drawable.bg_txt_notification);
         this.tvCountNoti.setLayoutParams(p);
-        this.tvCountNoti.setVisibility(8);
+        this.tvCountNoti.setVisibility(View.GONE);
         initControl();
     }
 
@@ -1083,8 +1085,8 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         this.listCash.add(getString(R.string.cash));
         this.listCash.add(getString(R.string.atm));
         this.listCash.add(getString(R.string.credit));
-        SpinnerAdapter adapterCash = new ArrayAdapter(this, R.layout.item_cash, this.listCash);
-        adapterCash.setDropDownViewResource(17367050);
+        ArrayAdapter adapterCash = new ArrayAdapter(this, R.layout.item_cash, this.listCash);
+        adapterCash.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         this.spCash.setAdapter(adapterCash);
         String token = SharedPref.getInstance(this).getString(Constant.KEY_TOKEN, BuildConfig.FLAVOR);
         String lang = SharedPref.getInstance(this).getString("lang", "en");
@@ -1271,7 +1273,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         } else if (this.drawer.isDrawerOpen((int) GravityCompat.END)) {
             this.drawer.closeDrawer((int) GravityCompat.END);
         } else {
-            if (this.llForm.getVisibility() == 0 || this.btnPannic.getVisibility() == 8) {
+            if (this.llForm.getVisibility() == View.VISIBLE || this.btnPannic.getVisibility() == View.GONE) {
                 updateViewMapState(STATE_NOMAL);
             } else {
                 super.onBackPressed();
@@ -1492,10 +1494,10 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                 if (this.mMap != null) {
                     this.mMap.clear();
                 }
-                this.llBottomBack.setVisibility(8);
-                this.llBottom.setVisibility(8);
+                this.llBottomBack.setVisibility(View.GONE);
+                this.llBottom.setVisibility(View.GONE);
                 this.llForm.setVisibility(View.VISIBLE);
-                this.btnPannic.setVisibility(8);
+                this.btnPannic.setVisibility(View.GONE);
                 p = new RelativeLayout.LayoutParams(-2, -2);
                 p.addRule(STATE_SHOW_HCI, R.id.ll_form);
                 p.setMargins(40, 10, 10, 30);
@@ -1506,9 +1508,9 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                     this.mMap.clear();
                 }
                 this.llBottomBack.setVisibility(View.VISIBLE);
-                this.llBottom.setVisibility(8);
-                this.llForm.setVisibility(8);
-                this.btnPannic.setVisibility(8);
+                this.llBottom.setVisibility(View.GONE);
+                this.llForm.setVisibility(View.GONE);
+                this.btnPannic.setVisibility(View.GONE);
                 p = new RelativeLayout.LayoutParams(-2, -2);
                 p.addRule(STATE_SHOW_HCI, R.id.ll_bottom_back);
                 p.setMargins(40, 10, 10, 30);
@@ -1633,7 +1635,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                 this.isShownScheldule = true;
             case R.id.btn_pannic /*2131689815*/:
                 findHCI();
-                this.btnPannic.setVisibility(8);
+                this.btnPannic.setVisibility(View.GONE);
                 updateViewMapState(STATE_SHOW_HCI);
             case R.id.linear_bottom_main /*2131689817*/:
                 showListExpert();
@@ -1735,7 +1737,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                     return;
                 }
                 MainActivity.this.dialogProgrees.hideDialog();
-                Toast.makeText(MainActivity.this, MainActivity.this.getString(R.string.unknow_error), MainActivity.STATE_NOMAL).show();
+                Toast.makeText(MainActivity.this, MainActivity.this.getString(R.string.unknow_error), Toast.LENGTH_SHORT).show();
                 RLog.m86e(Integer.valueOf(response.code()));
             }
 
@@ -1799,7 +1801,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                         MainActivity.this.mListExpert = (List) ((ApiResponse) response.body()).getData();
                         if (MainActivity.this.mMap != null) {
                             MainActivity.this.mMap.clear();
-                            for (ExpertMarker ex : (List) ((ApiResponse) response.body()).getData()) {
+                            for (ExpertMarker ex :response.body().getData()) {
                                 LatLng latlng = new LatLng(ex.getLocation()[MainActivity.STATE_SHOW_CATEGORY], ex.getLocation()[MainActivity.STATE_NOMAL]);
                                 if (MainActivity.this.mPinFileCategory != null) {
                                     CommonUtils.addMarkerFromFile(MainActivity.this.mPinFileCategory, MainActivity.this.mMap, latlng);
@@ -1864,7 +1866,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                         MainActivity.this.mListHCI = (List) ((ApiResponse) response.body()).getData();
                         if (MainActivity.this.mMap != null) {
                             MainActivity.this.mMap.clear();
-                            for (HICItem ex : (List) ((ApiResponse) response.body()).getData()) {
+                            for (HICItem ex :response.body().getData()) {
                                 if (ex.getCategory() != null && ex.getCategory().size() > 0) {
                                     MainActivity.this.mUmberService.downloadFilePin(ApiConstants.API_MEDIA_ROOT + ((HICItem.Category) ex.getCategory().get(MainActivity.STATE_NOMAL)).marker).enqueue(new C13391(ex));
                                 }
@@ -1944,7 +1946,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         if (this.mMap != null) {
             this.mMap.clear();
         }
-        this.llForm.setVisibility(8);
+        this.llForm.setVisibility(View.GONE);
         this.llBottom.setVisibility(View.VISIBLE);
         this.btnPannic.setVisibility(View.VISIBLE);
         this.mDateBooking = 0;
@@ -1952,8 +1954,8 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         this.mTimeStart = 0;
         this.mTimeEnd = 0;
         this.tvRequiredTextForm.setText(getString(R.string.your_text_requirements_texts_images_audios));
-        this.imgRecord.setVisibility(8);
-        this.imgImage.setVisibility(8);
+        this.imgRecord.setVisibility(View.GONE);
+        this.imgImage.setVisibility(View.GONE);
         this.stringTag.clear();
         this.promotion = BuildConfig.FLAVOR;
         if (this.rcv != null) {
@@ -1973,14 +1975,14 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         ImageView btnCamera = (ImageView) view.findViewById(R.id.btn_add_img);
         LinearLayout btnStartRecord = (LinearLayout) view.findViewById(R.id.start);
         Button btnStopRecord = (Button) view.findViewById(R.id.stop);
-        TagCompleteTextView edt = (TagCompleteTextView) view.findViewById(R.id.edt_message);
-
-        edt.setSplitChar(',');
-        if (this.stringTag.size() > 0) {
-            for (Tag addObject : this.stringTag) {
-                edt.addObject(addObject);
-            }
-        }
+//        TagCompleteTextView edt = (TagCompleteTextView) view.findViewById(R.id.edt_message);
+//
+//        edt.setSplitChar(',');
+//        if (this.stringTag.size() > 0) {
+//            for (Tag addObject : this.stringTag) {
+//                edt.addObject(addObject);
+//            }
+//        } // TODO: 3/19/2017 comment cause error tag
         this.rcv = (RecyclerView) view.findViewById(R.id.rcv_image);
         this.rcv.setLayoutManager(new LinearLayoutManager(this, STATE_NOMAL, false));
         this.rcv.setHasFixedSize(true);
@@ -2009,14 +2011,14 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
         btnCamera.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 if (MainActivity.this.listImages.size() >= 15) {
-                    Toast.makeText(MainActivity.this, R.string.full_image, MainActivity.STATE_NOMAL).show();
+                    Toast.makeText(MainActivity.this, R.string.full_image, Toast.LENGTH_SHORT).show();
                 } else {
                     PhotoPicker.builder().setPhotoCount(15 - MainActivity.this.listImages.size()).setShowCamera(true).setShowGif(true).setPreviewEnabled(true).start(MainActivity.this, (int) PhotoPicker.REQUEST_CODE);
                 }
             }
         });
-        edt.addTextChangedListener(new AnonymousClass48(edt));
-        button.setOnClickListener(new AnonymousClass49(edt, dialog));
+//        edt.addTextChangedListener(new AnonymousClass48(edt));    // TODO: 3/19/2017 comment case error tag
+//        button.setOnClickListener(new AnonymousClass49(edt, dialog));
         dialog.setCancelable(false);
         dialog.getWindow().setLayout(-2, -2);
         return dialog;

@@ -2,86 +2,107 @@ package com.umberapp.umber.models;
 
 import java.util.List;
 
-public class ExpertMarker extends User {
-    String cashPayment;
-    List<Category> category;
-    double costHour;
-    int dateBooking;
-    int jobsDone;
-    double[] location;
-    double maxFeeToPaid;
-    RangeTime timeRange;
-    int totalOrderSuccess;
-
-    public int getJobsDone() {
-        return this.jobsDone;
-    }
-
-    public void setJobsDone(int jobsDone) {
-        this.jobsDone = jobsDone;
-    }
-
-    public String getCashPayment() {
-        return this.cashPayment;
-    }
-
-    public void setCashPayment(String cashPayment) {
-        this.cashPayment = cashPayment;
-    }
-
-    public List<Category> getCategory() {
-        return this.category;
-    }
-
-    public void setCategory(List<Category> category) {
-        this.category = category;
-    }
-
-    public double[] getLocation() {
-        return this.location;
-    }
-
-    public void setLocation(double[] location) {
-        this.location = location;
-    }
-
-    public double getMaxFeeToPaid() {
-        return this.maxFeeToPaid;
-    }
-
-    public void setMaxFeeToPaid(double maxFeeToPaid) {
-        this.maxFeeToPaid = maxFeeToPaid;
-    }
-
-    public double getCostHour() {
-        return this.costHour;
-    }
-
-    public void setCostHour(double costHour) {
-        this.costHour = costHour;
-    }
-
-    public int getDateBooking() {
-        return this.dateBooking;
-    }
-
-    public void setDateBooking(int dateBooking) {
-        this.dateBooking = dateBooking;
-    }
-
-    public RangeTime getTimeRange() {
-        return this.timeRange;
-    }
-
-    public void setTimeRange(RangeTime timeRange) {
-        this.timeRange = timeRange;
-    }
-
-    public int getTotalOrderSuccess() {
-        return this.totalOrderSuccess;
-    }
-
-    public void setTotalOrderSuccess(int totalOrderSuccess) {
-        this.totalOrderSuccess = totalOrderSuccess;
-    }
+public class ExpertMarker
+  extends User
+{
+  String cashPayment;
+  List<Category> category;
+  double costHour;
+  int dateBooking;
+  int jobsDone;
+  double[] location;
+  double maxFeeToPaid;
+  RangeTime timeRange;
+  int totalOrderSuccess;
+  
+  public String getCashPayment()
+  {
+    return this.cashPayment;
+  }
+  
+  public List<Category> getCategory()
+  {
+    return this.category;
+  }
+  
+  public double getCostHour()
+  {
+    return this.costHour;
+  }
+  
+  public int getDateBooking()
+  {
+    return this.dateBooking;
+  }
+  
+  public int getJobsDone()
+  {
+    return this.jobsDone;
+  }
+  
+  public double[] getLocation()
+  {
+    return this.location;
+  }
+  
+  public double getMaxFeeToPaid()
+  {
+    return this.maxFeeToPaid;
+  }
+  
+  public RangeTime getTimeRange()
+  {
+    return this.timeRange;
+  }
+  
+  public int getTotalOrderSuccess()
+  {
+    return this.totalOrderSuccess;
+  }
+  
+  public void setCashPayment(String paramString)
+  {
+    this.cashPayment = paramString;
+  }
+  
+  public void setCategory(List<Category> paramList)
+  {
+    this.category = paramList;
+  }
+  
+  public void setCostHour(double paramDouble)
+  {
+    this.costHour = paramDouble;
+  }
+  
+  public void setDateBooking(int paramInt)
+  {
+    this.dateBooking = paramInt;
+  }
+  
+  public void setJobsDone(int paramInt)
+  {
+    this.jobsDone = paramInt;
+  }
+  
+  public void setLocation(double[] paramArrayOfDouble)
+  {
+    this.location = paramArrayOfDouble;
+  }
+  
+  public void setMaxFeeToPaid(double paramDouble)
+  {
+    this.maxFeeToPaid = paramDouble;
+  }
+  
+  public void setTimeRange(RangeTime paramRangeTime)
+  {
+    this.timeRange = paramRangeTime;
+  }
+  
+  public void setTotalOrderSuccess(int paramInt)
+  {
+    this.totalOrderSuccess = paramInt;
+  }
 }
+

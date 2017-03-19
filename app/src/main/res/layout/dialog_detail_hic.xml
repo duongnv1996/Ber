@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/bg_address_map" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="300.0dip" android:minHeight="400.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/ll_root" android:background="@drawable/bg_address_map" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <ScrollView android:background="@drawable/bg_address_map" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bg_dialog" android:paddingLeft="@dimen/margin_large" android:paddingRight="@dimen/margin_large" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout style="@style/LayoutHICDialog">
+                    <TextView android:text="@string/cost" style="@style/TextLayoutHIC" />
+                    <android.support.v7.widget.AppCompatSpinner android:id="@+id/sp_cost" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutHICDialog">
+                    <TextView android:text="@string/outpatient" style="@style/TextLayoutHIC" />
+                    <TextView android:id="@+id/tv_outpatien" style="@style/TextLayoutHIC" />
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutHICDialog">
+                    <TextView android:text="@string/inpatient" style="@style/TextLayoutHIC" />
+                    <TextView android:id="@+id/tv_inpatien" style="@style/TextLayoutHIC" />
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutHICDialog">
+                    <TextView android:text="@string/specialities" style="@style/TextLayoutHIC" />
+                    <TextView android:id="@+id/tv_spec" style="@style/TextLayoutHIC" />
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutHICDialog">
+                    <TextView android:text="@string/address_ll_hic" style="@style/TextLayoutHIC" />
+                    <TextView android:id="@+id/tv_address" style="@style/TextLayoutHIC" />
+                </LinearLayout>
+                <LinearLayout style="@style/LayoutHICDialog">
+                    <TextView android:text="@string/phone" style="@style/TextLayoutHIC" />
+                    <TextView android:id="@+id/tv_phone" style="@style/TextLayoutHIC" />
+                </LinearLayout>
+                <FrameLayout android:layout_gravity="center" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="10.0dip">
+                    <de.hdodenhof.circleimageview.CircleImageView android:layout_gravity="bottom|center" android:id="@+id/profilePic" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/background" />
+                    <de.hdodenhof.circleimageview.CircleImageView android:layout_gravity="center|right|top" android:id="@+id/ic_category" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginTop="30.0dip" android:src="@drawable/background" />
+                </FrameLayout>
+                <TextView android:textSize="@dimen/text_large" android:textColor="@color/black" android:layout_gravity="center" android:id="@+id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_small" android:text="Name" />
+                <RatingBar android:id="@+id/rate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_medium" android:numStars="5" android:rating="3.0" android:stepSize="1.0" android:layout_weight="1.0" style="@style/Base.Widget.AppCompat.RatingBar.Small" />
+                <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_medium" android:layout_marginBottom="@dimen/margin_medium">
+                    <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/ll_call" android:focusable="true" android:clickable="true" android:layout_width="@dimen/size_btn_call" android:layout_height="wrap_content" android:foreground="?android:selectableItemBackground" android:onClick="onClick" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8.0dip" app:cardElevation="@dimen/elevation_card">
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" app:srcCompat="@drawable/ic_local_phone_black" />
+                            <TextView android:textSize="@dimen/text_large" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center"
+                                android:padding="@dimen/margin_medium" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/call" android:textAllCaps="true" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/ll_sms" android:focusable="true" android:clickable="true" android:layout_width="@dimen/size_btn_call" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_medium" android:layout_marginRight="@dimen/margin_small" android:layout_marginBottom="@dimen/margin_small" android:foreground="?android:selectableItemBackground" android:onClick="onClick" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8.0dip" app:cardElevation="@dimen/elevation_card">
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" app:srcCompat="@drawable/message_processing" />
+                            <TextView android:textSize="@dimen/text_large" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center"
+                                android:padding="@dimen/margin_medium" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/sms" android:textAllCaps="true" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_medium" android:layout_marginBottom="@dimen/margin_medium">
+                    <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/ll_back" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" android:layout_marginRight="@dimen/margin_small" android:layout_marginBottom="@dimen/margin_small" android:foreground="?android:selectableItemBackground" android:layout_weight="1.0" android:onClick="onClick" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8.0dip" app:cardElevation="@dimen/elevation_card">
+                        <TextView android:textSize="@dimen/text_large" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center" android:padding="@dimen/margin_medium" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/back" android:textAllCaps="true" />
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

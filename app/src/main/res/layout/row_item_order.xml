@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow android:id="@+id/ll_root" style="@style/RowOrder200"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@+id/tv_lb" android:text="@string/cost_hours" style="@style/TextOderDetailItem_1" />
+    <View style="@style/DividerH" />
+    <TextView android:id="@+id/tv_des" android:text="" style="@style/TextOderDetailItem_2" />
+</TableRow>

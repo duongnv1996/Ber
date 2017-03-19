@@ -2,95 +2,106 @@ package com.umberapp.umber.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
+import android.os.Parcelable.Creator;
 import com.google.gson.annotations.SerializedName;
 
-public class OnsignalItem implements Parcelable {
-    public static final Creator<OnsignalItem> CREATOR;
-    String expertId;
-    Fields fields;
-    @SerializedName("orderId")
-    public String orderId;
-    @SerializedName("status")
-    public String status;
-    @SerializedName("type")
-    public String type;
-
-    /* renamed from: com.umberapp.umber.models.OnsignalItem.1 */
-    static class C14371 implements Creator<OnsignalItem> {
-        C14371() {
-        }
-
-        public OnsignalItem createFromParcel(Parcel in) {
-            return new OnsignalItem(in);
-        }
-
-        public OnsignalItem[] newArray(int size) {
-            return new OnsignalItem[size];
-        }
+public class OnsignalItem
+  implements Parcelable
+{
+  public static final Creator<OnsignalItem> CREATOR = new Creator()
+  {
+    public OnsignalItem createFromParcel(Parcel paramAnonymousParcel)
+    {
+      return new OnsignalItem(paramAnonymousParcel);
     }
-
-    protected OnsignalItem(Parcel in) {
-        this.orderId = in.readString();
-        this.type = in.readString();
-        this.status = in.readString();
-        this.fields = (Fields) in.readParcelable(Fields.class.getClassLoader());
-        this.expertId = in.readString();
+    
+    public OnsignalItem[] newArray(int paramAnonymousInt)
+    {
+      return new OnsignalItem[paramAnonymousInt];
     }
-
-    static {
-        CREATOR = new C14371();
-    }
-
-    public String getExpertId() {
-        return this.expertId;
-    }
-
-    public void setExpertId(String expertId) {
-        this.expertId = expertId;
-    }
-
-    public String getOrderId() {
-        return this.orderId;
-    }
-
-    public Fields getFields() {
-        return this.fields;
-    }
-
-    public void setFields(Fields fields) {
-        this.fields = fields;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    public String getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getType() {
-        return this.type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public int describeContents() {
-        return 0;
-    }
-
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.orderId);
-        parcel.writeString(this.type);
-        parcel.writeString(this.status);
-        parcel.writeParcelable(this.fields, i);
-        parcel.writeString(this.expertId);
-    }
+  };
+  String expertId;
+  Fields fields;
+  @SerializedName("orderId")
+  public String orderId;
+  @SerializedName("status")
+  public String status;
+  @SerializedName("type")
+  public String type;
+  
+  public OnsignalItem() {}
+  
+  protected OnsignalItem(Parcel paramParcel)
+  {
+    this.orderId = paramParcel.readString();
+    this.type = paramParcel.readString();
+    this.status = paramParcel.readString();
+    this.fields = ((Fields)paramParcel.readParcelable(Fields.class.getClassLoader()));
+    this.expertId = paramParcel.readString();
+  }
+  
+  public int describeContents()
+  {
+    return 0;
+  }
+  
+  public String getExpertId()
+  {
+    return this.expertId;
+  }
+  
+  public Fields getFields()
+  {
+    return this.fields;
+  }
+  
+  public String getOrderId()
+  {
+    return this.orderId;
+  }
+  
+  public String getStatus()
+  {
+    return this.status;
+  }
+  
+  public String getType()
+  {
+    return this.type;
+  }
+  
+  public void setExpertId(String paramString)
+  {
+    this.expertId = paramString;
+  }
+  
+  public void setFields(Fields paramFields)
+  {
+    this.fields = paramFields;
+  }
+  
+  public void setOrderId(String paramString)
+  {
+    this.orderId = paramString;
+  }
+  
+  public void setStatus(String paramString)
+  {
+    this.status = paramString;
+  }
+  
+  public void setType(String paramString)
+  {
+    this.type = paramString;
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeString(this.orderId);
+    paramParcel.writeString(this.type);
+    paramParcel.writeString(this.status);
+    paramParcel.writeParcelable(this.fields, paramInt);
+    paramParcel.writeString(this.expertId);
+  }
 }
+

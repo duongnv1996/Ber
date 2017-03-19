@@ -32,7 +32,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.iwf.photopicker.R;
 
 public class ImageAdapter extends Adapter<ImageAdapter.ImageHolder> {
     Context context;
@@ -61,7 +60,7 @@ public class ImageAdapter extends Adapter<ImageAdapter.ImageHolder> {
 
         public boolean onException(Exception e, File model, Target<Bitmap> target, boolean isFirstResource) {
             ImageAdapter.this.dialog.hideDialog();
-            Toast.makeText(this.val$context, this.val$context.getString(R.string.unknow_error), 0).show();
+            Toast.makeText(this.val$context, this.val$context.getString(R.string.unknow_error), Toast.LENGTH_SHORT).show();
             RLog.m86e(e.getMessage());
             return false;
         }
@@ -79,7 +78,7 @@ public class ImageAdapter extends Adapter<ImageAdapter.ImageHolder> {
                 }
             } else {
                 ImageAdapter.this.dialog.hideDialog();
-                Toast.makeText(this.val$context, this.val$context.getString(R.string.unknow_error), 0).show();
+                Toast.makeText(this.val$context, this.val$context.getString(R.string.unknow_error), Toast.LENGTH_SHORT).show();
             }
             return false;
         }
@@ -144,7 +143,7 @@ public class ImageAdapter extends Adapter<ImageAdapter.ImageHolder> {
         }
         if (img == null || img.getPath() == null) {
             this.dialog.hideDialog();
-            Toast.makeText(context, context.getString(R.string.unknow_error), 0).show();
+            Toast.makeText(context, context.getString(R.string.unknow_error), Toast.LENGTH_SHORT).show();
             return;
         }
         Glide.with(context).load(new File(img.getPath())).asBitmap().override((int) ApiConstants.CODE_ERROR_SERVER, (int) ApiConstants.CODE_ERROR_SERVER).fitCenter().skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.ALL).listener(new C13932(context, img)).into(new C13921());
@@ -184,8 +183,8 @@ public class ImageAdapter extends Adapter<ImageAdapter.ImageHolder> {
         if (holder != null) {
             Image image = (Image) this.imageList.get(position);
             File fileImage = new File(image.getPath());
-            holder.load.setVisibility(8);
-            holder.img.setVisibility(0);
+            holder.load.setVisibility(View.GONE);
+            holder.img.setVisibility(View.VISIBLE);
             if (fileImage.exists()) {
                 Glide.with(this.context).load(fileImage).asBitmap().skipMemoryCache(true).centerCrop().thumbnail(0.1f).error((int) R.drawable.__picker_ic_broken_image_black_48dp).into(holder.img);
             }

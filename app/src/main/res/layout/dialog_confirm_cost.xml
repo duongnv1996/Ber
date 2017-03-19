@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/bg_address_map" android:padding="@dimen/margin_medium" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/text_large" android:textStyle="bold" android:textColor="@color/primary_text" android:gravity="center" android:layout_gravity="center"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_medium" android:layout_marginBottom="@dimen/margin_medium" android:text="@string/estimation_of_work" />
+    <View android:background="@color/divider" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <TextView android:textSize="@dimen/text_medium" android:textStyle="normal" android:gravity="center" android:layout_gravity="center" android:id="@+id/tv_mess" android:paddingBottom="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_large" android:text="@string/the_expert_arrived_on_site_and_made_this_estimation" />
+    <LinearLayout android:orientation="vertical" android:padding="@dimen/margin_small" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_medium">
+        <TableRow android:background="@color/material_blue_200" android:padding="@dimen/margin_small" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/divider"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <TextView android:gravity="left"
+                android:text="@string/time" android:layout_weight="2.0" style="@style/TextExpertFragment" />
+            <View android:background="@color/divider" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+            <TextView android:gravity="left" android:id="@+id/tv_des_time" android:text="" style="@style/TextExpertFragment" />
+        </TableRow>
+        <TableRow android:background="@color/material_blue_50" android:padding="@dimen/margin_small" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/divider"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <TextView android:gravity="left"
+                android:text="@string/cost_hour_or_job" android:layout_weight="2.0" style="@style/TextExpertFragment" />
+            <View android:background="@color/divider" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+            <TextView android:gravity="left" android:id="@+id/tv_des_cost" android:text="" style="@style/TextExpertFragment" />
+        </TableRow>
+        <TableRow android:background="@color/material_blue_200" android:padding="@dimen/margin_small" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/divider"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <TextView android:gravity="left"
+                android:text="@string/material_cost" android:layout_weight="2.0" style="@style/TextExpertFragment" />
+            <View android:background="@color/divider" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+            <TextView android:gravity="left" android:id="@+id/tv_des_material" android:text="" style="@style/TextExpertFragment" />
+        </TableRow>
+        <TableRow android:background="@color/material_blue_50" android:padding="@dimen/margin_small" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/divider">
+            <TextView android:gravity="left"
+                android:text="@string/umber_connection_fee" android:layout_weight="2.0" style="@style/TextExpertFragment" />
+            <View android:background="@color/divider" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+            <TextView android:gravity="left" android:id="@+id/tv_des_fee" android:text="" style="@style/TextExpertFragment" />
+        </TableRow>
+        <TableRow android:id="@+id/ll_root" android:background="@color/material_blue_200" android:padding="@dimen/margin_small" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/divider"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <TextView android:gravity="left"
+                android:text="@string/total_cost" android:layout_weight="2.0" style="@style/TextExpertFragment" />
+            <View android:background="@color/divider" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+            <TextView android:gravity="left" android:id="@+id/tv_des_total" android:text="" style="@style/TextExpertFragment" />
+        </TableRow>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_large" android:layout_marginBottom="@dimen/margin_medium">
+        <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/ll_cancel" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" android:layout_marginRight="@dimen/margin_small" android:layout_marginBottom="@dimen/margin_small" android:foreground="?android:selectableItemBackground" android:layout_weight="1.0" android:onClick="onClick" app:cardBackgroundColor="@color/colorAccent" app:cardCornerRadius="@dimen/size_radius_card" app:cardElevation="@dimen/elevation_card">
+            <TextView android:textSize="@dimen/text_large" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center" android:padding="@dimen/margin_medium" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/cancel_order" android:textAllCaps="true" />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView android:gravity="center" android:id="@+id/ll_ok" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_small" android:layout_marginRight="@dimen/margin_small" android:layout_marginBottom="@dimen/margin_small" android:foreground="?android:selectableItemBackground" android:layout_weight="1.0" android:onClick="onClick" app:cardBackgroundColor="@color/colorPrimary" app:cardCornerRadius="@dimen/size_radius_card" app:cardElevation="@dimen/elevation_card">
+            <TextView android:textSize="@dimen/text_large" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center"
+                android:padding="@dimen/margin_medium" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ok" android:textAllCaps="true" />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</LinearLayout>
