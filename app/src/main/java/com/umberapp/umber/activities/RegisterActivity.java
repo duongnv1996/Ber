@@ -602,13 +602,13 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
         };
         this.cameraAppErrorListener = new CantFindCameraAppErrorListener() {
             public void cantFindCameraApp() {
-                Toast.makeText(RegisterActivity.this, "Can't find the camera app", 0).show();
+                Toast.makeText(RegisterActivity.this, "Can't find the camera app", Toast.LENGTH_SHORT).show();
             }
         };
         this.fileForCameraListener = new ErrorCreatingTempFileForCameraListener() {
             public void errorCreatingTempFileForCamera() {
                 Log.e(BuildConfig.FLAVOR, "errorCreatingTempFileForCamera: ");
-                Toast.makeText(RegisterActivity.this, "Error starting camera", 0).show();
+                Toast.makeText(RegisterActivity.this, "Error starting camera",  Toast.LENGTH_SHORT).show();
             }
         };
     }
@@ -670,7 +670,7 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
         this.dialogProgress = new ProgressDialogCustom(this);
         this.picPicker = new PicPicker(this, this.picResultListener).setFileForCameraListener(this.fileForCameraListener).setCameraAppErrorListener(this.cameraAppErrorListener);
         this.adapter = new ArrayAdapter(this, R.layout.item_sp_gender, this.arrGender);
-        this.adapter.setDropDownViewResource(17367049);
+        this.adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.mSpGender.setAdapter(this.adapter);
         this.mSpGender.setSelection(0);
         this.mGoogleApiClient = new GoogleApiClient.Builder(this).addApi(Places.GEO_DATA_API).build();
@@ -756,7 +756,7 @@ public class RegisterActivity extends AppCompatActivity implements OnClickListen
                 } catch (GooglePlayServicesRepairableException e) {
                     GooglePlayServicesUtil.getErrorDialog(e.getConnectionStatusCode(), this, 0);
                 } catch (GooglePlayServicesNotAvailableException e2) {
-                    Toast.makeText(this, R.string.service_not_avalable, PLACE_PICKER_FLAG).show();
+                    Toast.makeText(this, R.string.service_not_avalable, Toast.LENGTH_SHORT).show();
                 }
             case R.id.edt_birth /*2131689720*/:
                 getWindow().setSoftInputMode(3);

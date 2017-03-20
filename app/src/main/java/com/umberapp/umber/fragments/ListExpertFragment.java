@@ -58,32 +58,32 @@ public class ListExpertFragment extends BaseFragment implements OnClickListener 
     boolean JobDecs;
     boolean PriceDecs;
     boolean StartDecs;
-    @Bind({2131689864})
+    @Bind({R.id.ll_back})
     CardView btnBack;
     boolean distDecs;
     ExpertBit ex;
     boolean genderDecs;
-    @Bind({2131689930})
+    @Bind({R.id.img_sort_decs})
     ImageView imgSortDesc;
-    @Bind({2131689929})
+    @Bind({R.id.sort_rate})
     LinearLayout imgSortRate;
     private List<ExpertBit> listEx;
     private ExpertAdapter mAdapter;
     private List<Work> mListWorks;
     UmberService mUmberService;
     private String orderId;
-    @Bind({2131689935})
+    @Bind({R.id.rcv_work})
     RecyclerView rcvExperts;
     BroadcastReceiver receiver;
-    @Bind({2131689932})
+    @Bind({R.id.sort_dist})
     TextView tvSortDist;
-    @Bind({2131689933})
+    @Bind({R.id.sort_gender})
     TextView tvSortGender;
-    @Bind({2131689934})
+    @Bind({R.id.sort_job})
     TextView tvSortJob;
-    @Bind({2131689931})
+    @Bind({R.id.sort_price})
     TextView tvSortPrice;
-    @Bind({2131689928})
+    @Bind({R.id.tv_tile})
     TextView tvTitle;
 
     /* renamed from: com.umberapp.umber.fragments.ListExpertFragment.1 */

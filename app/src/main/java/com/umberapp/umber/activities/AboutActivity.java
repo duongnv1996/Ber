@@ -22,14 +22,19 @@ public class AboutActivity extends AppCompatActivity implements OnClickListener 
         switch (view.getId()) {
             case R.id.btn_back /*2131689670*/:
                 finish();
+				break;
             case R.id.tw /*2131689672*/:
                 CommonUtils.openUrl(this, "https://twitter.com/umberindonesia");
+				break;
             case R.id.fb /*2131689673*/:
                 CommonUtils.openUrl(this, "https://www.facebook.com/umberIndonesia/");
+				break;
             case R.id.ins /*2131689674*/:
                 CommonUtils.openUrl(this, "https://www.instagram.com/umberindonesia/");
+				break;
             case R.id.gg /*2131689675*/:
                 CommonUtils.openUrl(this, "https://plus.google.com/105171263272563024894");
+				break;
             default:
         }
     }

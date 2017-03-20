@@ -38,19 +38,19 @@ import retrofit2.Response;
 
 public class FaqFragment extends BaseFragment implements OnClickListener {
     private ProgressDialogCustom dialogProgress;
-    @Bind({2131689927})
+    @Bind({R.id.edt_search_faq})
     EditText edtSearch;
     FaqAdapter faqAdapter;
-    @Bind({2131689701})
+    @Bind({R.id.back})
     ImageView imgBack;
     List<FaqItem> listNotificationItemPages;
-    @Bind({2131689793})
+    @Bind({R.id.ll_noti})
     LinearLayout llNoti;
-    @Bind({2131689792})
+    @Bind({R.id.load_noti})
     AVLoadingIndicatorView loadNoti;
     private UmberService mUmberService;
     int page;
-    @Bind({2131689794})
+    @Bind({R.id.rcv_noti})
     PullToRefreshRecyclerView rcvNoti;
 
     /* renamed from: com.umberapp.umber.fragments.FaqFragment.1 */
@@ -133,6 +133,7 @@ public class FaqFragment extends BaseFragment implements OnClickListener {
         switch (view.getId()) {
             case R.id.back /*2131689701*/:
                 ((MainActivity) getActivity()).onBackPressed();
+				break;
             default:
         }
     }

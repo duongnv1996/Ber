@@ -34,27 +34,27 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ExpertFragment extends BaseFragment implements OnClickListener {
-    @Bind({2131689864})
+    @Bind({R.id.ll_back})
     CardView btnBack;
-    @Bind({2131689865})
+    @Bind({R.id.ll_select})
     CardView btnSelect;
     private String idEx;
-    @Bind({2131689821})
+    @Bind({R.id.profilePic})
     CircleImageView imgAvatar;
-    @Bind({2131689823})
+    @Bind({R.id.ic_category})
     CircleImageView imgCategory;
     private DescriptionAdapter mAdapter;
     private Expert mExpert;
     private UmberService mUmberService;
-    @Bind({2131689861})
+    @Bind({R.id.rate})
     RatingBar rate;
-    @Bind({2131689863})
+    @Bind({R.id.rcv_des})
     RecyclerView rcvDes;
-    @Bind({2131690043})
+    @Bind({R.id.tv_des})
     TextView tvCost;
-    @Bind({2131689862})
+    @Bind({R.id.tv_job_done})
     TextView tvJobDone;
-    @Bind({2131689824})
+    @Bind({R.id.tv_name})
     TextView tvName;
 
     /* renamed from: com.umberapp.umber.fragments.ExpertFragment.1 */

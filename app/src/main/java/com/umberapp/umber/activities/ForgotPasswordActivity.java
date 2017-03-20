@@ -1,7 +1,9 @@
 package com.umberapp.umber.activities;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,9 +28,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ForgotPasswordActivity extends AppCompatActivity implements OnClickListener {
-    @Bind({2131689677})
+    @Bind({R.id.edt_username})
     EditText mEdtEmail;
-    @Bind({2131689680})
+    @Bind({R.id.progressBar})
     ProgressBar mProgress;
     UmberService umberService;
 
@@ -85,13 +87,17 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
         setContentView((int) R.layout.activity_forgot_password);
         ButterKnife.bind((Activity) this);
         this.umberService = (UmberService) ApiUtils.getRootApi().create(UmberService.class);
-        getWindow().setSoftInputMode(3);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
+            getWindow().setSoftInputMode(3);
+        }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_back /*2131689670*/:
                 finish();
+				break;
             case R.id.btn_resetpass /*2131689678*/:
                 CommonUtils.hideKeyBroad(this, this.mEdtEmail);
                 String email = this.mEdtEmail.getText().toString();
@@ -101,7 +107,9 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
                 }
                 this.mProgress.setVisibility(View.VISIBLE);
                 checkEmail(email);
+				break;
             default:
+			break;
         }
     }
 

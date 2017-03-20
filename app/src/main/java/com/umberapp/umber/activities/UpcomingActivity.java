@@ -2,6 +2,7 @@ package com.umberapp.umber.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,17 +44,17 @@ import retrofit2.Response;
 public class UpcomingActivity extends BaseActivity implements OnClickListener {
     HistoryPageAdapter historyPageAdapter;
     List<UpcommingItem> listOrderItemPages;
-    @Bind({2131689793})
+    @Bind({R.id.ll_noti})
     LinearLayout llNoti;
-    @Bind({2131689681})
+    @Bind({R.id.contentview})
     RelativeLayout llroot;
-    @Bind({2131689792})
+    @Bind({R.id.load_noti})
     AVLoadingIndicatorView loadNoti;
     private UmberService mUmberService;
     int page;
-    @Bind({2131689794})
+    @Bind({R.id.rcv_noti})
     PullToRefreshRecyclerView rcvNoti;
-    @Bind({2131689671})
+    @Bind({R.id.tv_title})
     TextView tvTitle;
 
     /* renamed from: com.umberapp.umber.activities.UpcomingActivity.1 */
@@ -187,7 +188,9 @@ public class UpcomingActivity extends BaseActivity implements OnClickListener {
         this.listOrderItemPages.clear();
         this.rcvNoti.setLoadmoreString(getString(R.string.loadding));
         this.rcvNoti.setPagingableListener(new C13812());
-        this.rcvNoti.setOnRefreshListener(new C13823());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+            this.rcvNoti.setOnRefreshListener(new C13823());
+        }
         getHistoryPage();
     }
 

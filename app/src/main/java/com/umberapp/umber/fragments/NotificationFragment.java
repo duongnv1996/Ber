@@ -50,19 +50,19 @@ import retrofit2.Response;
 
 public class NotificationFragment extends BaseFragment implements OnClickListener {
     ProgressDialogCustom dialogCustom;
-    @Bind({2131689701})
+    @Bind({R.id.back})
     ImageView imgBack;
     List<NotificationItemPage> listNotificationItemPages;
-    @Bind({2131689793})
+    @Bind({R.id.ll_noti})
     LinearLayout llNoti;
-    @Bind({2131689792})
+    @Bind({R.id.load_noti})
     AVLoadingIndicatorView loadNoti;
     private UmberService mUmberService;
     NotificationPageAdapter notificationPageAdapter;
     int page;
-    @Bind({2131689794})
+    @Bind({R.id.rcv_noti})
     PullToRefreshRecyclerView rcvNoti;
-    @Bind({2131689937})
+    @Bind({R.id.read_all})
     TextView tvRead;
 
     /* renamed from: com.umberapp.umber.fragments.NotificationFragment.1 */

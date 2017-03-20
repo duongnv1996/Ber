@@ -123,7 +123,7 @@ public class DialogWebView extends Dialog {
     private void setUpTitle() {
         requestWindowFeature(1);
         this.mTitle = new TextView(getContext());
-        this.mTitle.setText("Instagram");
+        this.mTitle.setText("");
         this.mTitle.setTextColor(-1);
         this.mTitle.setTypeface(Typeface.DEFAULT_BOLD);
         this.mTitle.setBackgroundColor(ViewCompat.MEASURED_STATE_MASK);

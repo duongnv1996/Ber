@@ -38,15 +38,15 @@ import retrofit2.Response;
 public class HistoryActivity extends BaseActivity implements OnClickListener {
     HistoryPageAdapter historyPageAdapter;
     List<UpcommingItem> listOrderItemPages;
-    @Bind({2131689793})
+    @Bind({R.id.ll_noti})
     LinearLayout llNoti;
-    @Bind({2131689681})
+    @Bind({R.id.contentview})
     RelativeLayout llroot;
-    @Bind({2131689792})
+    @Bind({R.id.load_noti})
     AVLoadingIndicatorView loadNoti;
     private UmberService mUmberService;
     int page;
-    @Bind({2131689794})
+    @Bind({R.id.rcv_noti})
     PullToRefreshRecyclerView rcvNoti;
 
     /* renamed from: com.umberapp.umber.activities.HistoryActivity.1 */

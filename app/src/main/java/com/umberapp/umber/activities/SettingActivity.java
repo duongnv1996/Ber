@@ -110,43 +110,43 @@ public class SettingActivity extends BaseActivity implements OnClickListener, On
     private static final int RC_SIGN_IN = 100;
     ArrayAdapter<String> adapter;
     final String[] arrGender;
-    @Bind({2131689826})
+    @Bind({R.id.ll_ok})
     CardView btnOk;
     private IntentBuilder builder;
     private CantFindCameraAppErrorListener cameraAppErrorListener;
     ProgressDialogCustom dialogProgress;
     private ErrorCreatingTempFileForCameraListener fileForCameraListener;
-    @Bind({2131689821})
+    @Bind({R.id.profilePic})
     CircleImageView imgAvt;
     OAuthAuthenticationListener listener;
-    @Bind({2131689681})
+    @Bind({R.id.contentview})
     RelativeLayout llroot;
     InstagramApp mApp;
-    @Bind({2131689716})
+    @Bind({R.id.edt_address})
     EditText mEdtAddress;
-    @Bind({2131689720})
+    @Bind({R.id.edt_birth})
     EditText mEdtBirth;
-    @Bind({2131689683})
+    @Bind({R.id.edt_email})
     EditText mEdtEmail;
-    @Bind({2131689712})
+    @Bind({R.id.edt_first_name})
     EditText mEdtFirstName;
-    @Bind({2131689714})
+    @Bind({R.id.edt_lastname})
     EditText mEdtLastName;
-    @Bind({2131689705})
+    @Bind({R.id.edt_sdt})
     EditText mEdtPhone;
     private File mFileAvata;
     FragmentManager mFragmentManager;
     GoogleApiClient mGoogleApiClient;
-    @Bind({2131689722})
+    @Bind({R.id.sp_gender})
     AppCompatSpinner mSpGender;
     private UmberService mUmberService;
     private PicPicker picPicker;
     private PicResultListener picResultListener;
-    @Bind({2131689822})
+    @Bind({R.id.progress})
     ProgressBar progressBar;
-    @Bind({2131689825})
+    @Bind({R.id.tv_balance})
     TextView tvBalance;
-    @Bind({2131689824})
+    @Bind({R.id.tv_name})
     TextView tvName;
     private User user;
 
@@ -450,7 +450,7 @@ public class SettingActivity extends BaseActivity implements OnClickListener, On
                 this.mEdtBirth.setText(CommonUtils.getDate(Long.parseLong(this.user.getBirthday()), StringUtil.DATE_FORMAT_7));
             }
             this.adapter = new ArrayAdapter(this, R.layout.item_sp_update_gender, this.arrGender);
-            this.adapter.setDropDownViewResource(17367049);
+            this.adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             this.mSpGender.setAdapter(this.adapter);
             if (this.user.getGender() == null || !this.user.getGender().equals(this.arrGender[0])) {
                 this.mSpGender.setSelection(PLACE_PICKER_FLAG);
@@ -531,7 +531,7 @@ public class SettingActivity extends BaseActivity implements OnClickListener, On
                 } catch (GooglePlayServicesRepairableException e) {
                     GooglePlayServicesUtil.getErrorDialog(e.getConnectionStatusCode(), this, 0);
                 } catch (GooglePlayServicesNotAvailableException e2) {
-                    Toast.makeText(this, R.string.service_not_avalable, PLACE_PICKER_FLAG).show();
+                    Toast.makeText(this, R.string.service_not_avalable, Toast.LENGTH_SHORT).show();
                 }
             case R.id.edt_birth /*2131689720*/:
                 getWindow().setSoftInputMode(3);
@@ -612,7 +612,7 @@ public class SettingActivity extends BaseActivity implements OnClickListener, On
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     SettingActivity.this.dialogProgress.hideDialog();
                     if (response.isSuccessful()) {
-                        Toast.makeText(SettingActivity.this, SettingActivity.this.getString(R.string.success), 0).show();
+                        Toast.makeText(SettingActivity.this, SettingActivity.this.getString(R.string.success), Toast.LENGTH_SHORT).show();
                     } else {
                         AlertDialogCustom.dialogMsg(SettingActivity.this, SettingActivity.this.getString(R.string.unknow_error)).show();
                     }

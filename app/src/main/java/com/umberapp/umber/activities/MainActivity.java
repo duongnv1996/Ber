@@ -178,23 +178,23 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
     private static final String TAG;
     private static String mFileName;
     private HashMap<Marker, HICItem> HICHashMap;
-    @Bind({2131689696})
+    @Bind(R.id.btn_location)
     CardView btnLocation;
-    @Bind({2131689815})
+    @Bind({R.id.btn_pannic})
     ImageView btnPannic;
     private IntentBuilder builder;
     private CantFindCameraAppErrorListener cameraAppErrorListener;
     private ProgressDialogCustom dialogProgrees;
     DrawerLayout drawer;
-    @Bind({2131689818})
+    @Bind({R.id.edt_catelogy})
     TextView edtCategory;
     private ErrorCreatingTempFileForCameraListener fileForCameraListener;
     ImageAdapter imgAdapter;
-    @Bind({2131689812})
+    @Bind(R.id.img_category)
     ImageView imgCategory;
-    @Bind({2131689810})
+    @Bind(R.id.img_image)
     ImageView imgImage;
-    @Bind({2131689809})
+    @Bind(R.id.img_record)
     ImageView imgRecord;
     private boolean isCameraChange;
     private boolean isClicked;
@@ -209,14 +209,14 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
     private List<Category> listCategories;
     private List<Image> listImages;
     private List<Category> listRecentlyCategories;
-    @Bind({2131689799})
+    @Bind({R.id.ll_bottom_main})
     CardView llBottom;
-    @Bind({2131689819})
+    @Bind({R.id.ll_bottom_back})
     CardView llBottomBack;
-    @Bind({2131689801})
+    @Bind({R.id.ll_form})
     LinearLayout llForm;
     private LinearLayout llRootNav;
-    @Bind({2131689681})
+    @Bind({R.id.contentview})
     RelativeLayout llroot;
     private String mAddress;
     private OnItemClickListener mAutocompleteClickListener;
@@ -251,24 +251,24 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
     private PicResultListener picResultListener;
     private ImageView pickerBtn;
     private int posCard;
-    @Bind({2131689798})
+    @Bind({R.id.progressbar_add})
     public ProgressBar progressBarAddress;
     private String promotion;
     Queue<MaterialDialog> queueEvent;
     RecyclerView rcv;
-    @Bind({2131689816})
-    RippleView ripple;
-    @Bind({2131689805})
+//    @Bind({R.id.more})
+//    RippleView ripple;
+    @Bind({R.id.sp_cash})
     AppCompatSpinner spCash;
     List<Tag> stringTag;
-    @Bind({2131689620})
+    @Bind({R.id.toolbar})
     Toolbar toolbar;
-    @Bind({2131689813})
+    @Bind({R.id.tv_category})
     TextView tvCategory;
     ImageView tvCountNoti;
-    @Bind({2131689742})
-    TextView tvCountNotification;
-    @Bind({2131689808})
+//    @Bind({R.id.badge_textView})
+//    TextView tvCountNotification;
+    @Bind({R.id.tv_required})
     TextView tvRequiredTextForm;
     VisualTask vs;
 
@@ -1024,7 +1024,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
     }
 
     public void readAllNotify() {
-        this.tvCountNotification.setVisibility(View.GONE);
+    //    this.tvCountNotification.setVisibility(View.GONE);
         this.tvCountNoti.setVisibility(View.GONE);
     }
 
@@ -1490,6 +1490,7 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                 this.btnLocation.setContentPadding(10, 10, 10, 10);
                 clearData();
                 this.btnLocation.setLayoutParams(p);
+                break;
             case STATE_SHOW_CATEGORY /*1*/:
                 if (this.mMap != null) {
                     this.mMap.clear();
@@ -1503,6 +1504,8 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                 p.setMargins(40, 10, 10, 30);
                 this.btnLocation.setContentPadding(10, 10, 10, 10);
                 this.btnLocation.setLayoutParams(p);
+                break;
+
             case STATE_SHOW_HCI /*2*/:
                 if (this.mMap != null) {
                     this.mMap.clear();
@@ -1516,6 +1519,8 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                 p.setMargins(40, 10, 10, 30);
                 this.btnLocation.setContentPadding(10, 10, 10, 10);
                 this.btnLocation.setLayoutParams(p);
+                break;
+
             default:
         }
     }
@@ -1529,24 +1534,31 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                 if (this.mLatlng != null) {
                     CommonUtils.focusCurrentLocation(this.mLatlng, 13.0f, this.mMap);
                 }
+                break;
             case R.id.ll_cancel /*2131689699*/:
-                updateViewMapState(STATE_NOMAL);
+                updateViewMapState(STATE_NOMAL);                break;
+
             case R.id.toolbar_title /*2131689732*/:
                 removeAllTab();
                 refreshView();
-                onResume();
+                onResume();                break;
+
             case R.id.menu /*2131689734*/:
-                this.drawer.openDrawer((int) GravityCompat.END);
+                this.drawer.openDrawer((int) GravityCompat.END);                break;
+
             case R.id.badge_icon_button /*2131689741*/:
-                startActivityForResult(new Intent(this, UpcomingActivity.class), Constant.UPCOMING_CODE);
+                startActivityForResult(new Intent(this, UpcomingActivity.class), Constant.UPCOMING_CODE);                break;
+
             case R.id.myLocation /*2131689797*/:
                 try {
                     startActivityForResult(new PlaceAutocomplete.IntentBuilder(STATE_SHOW_CATEGORY).build(this), PLACE_AUTOCOMPLETE_REQUEST_CODE);
                 } catch (GooglePlayServicesRepairableException e) {
                 } catch (GooglePlayServicesNotAvailableException e2) {
-                }
+                }                break;
+
             case R.id.ll_bottom_main /*2131689799*/:
-                showListExpert();
+                showListExpert();                break;
+
             case R.id.schedule /*2131689802*/:
                 mDate = StringUtil.getCurrentDate();
                 mDate.setYear(mDate.getYear() + 1900);
@@ -1577,15 +1589,18 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                 }, mDate, toDate);
                 dialogTime.show();
                 this.listDialog.add(dialogTime);
-                this.isShownScheldule = true;
+                this.isShownScheldule = true;                break;
+
             case R.id.cash /*2131689804*/:
-                this.spCash.performClick();
+                this.spCash.performClick();                break;
+
             case R.id.promo /*2131689806*/:
                 AlertDialogCustom.dialogPromotion(this, this.mUmberService, new OnRespone<String>() {
                     public void onRespone(String object) {
                         MainActivity.this.promotion = object;
                     }
-                }).show();
+                }).show();                break;
+
             case R.id.edt_txt /*2131689807*/:
                 try {
                     Dialog dialogText = dialogTextForm(this, new CallbackDialog() {
@@ -1596,7 +1611,8 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                     this.listDialog.add(dialogText);
                 } catch (Exception e3) {
                     e3.printStackTrace();
-                }
+                }                break;
+
             case R.id.ll_category /*2131689811*/:
                 showListExpert();
             case R.id.ll_book_now /*2131689814*/:
@@ -1632,20 +1648,28 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                 }, mDate, toDate);
                 dialogTime.show();
                 this.listDialog.add(dialogTime);
-                this.isShownScheldule = true;
+                this.isShownScheldule = true;                break;
+
             case R.id.btn_pannic /*2131689815*/:
                 findHCI();
                 this.btnPannic.setVisibility(View.GONE);
-                updateViewMapState(STATE_SHOW_HCI);
+                updateViewMapState(STATE_SHOW_HCI);                break;
+
             case R.id.linear_bottom_main /*2131689817*/:
-                showListExpert();
+                showListExpert();                break;
+
             case R.id.edt_catelogy /*2131689818*/:
-                showListExpert();
+                showListExpert();                break;
+
             case R.id.linear_bottom_back /*2131689820*/:
-                updateViewMapState(STATE_NOMAL);
+                updateViewMapState(STATE_NOMAL);                break;
+
             case R.id.ll_root_nav /*2131690013*/:
-                startActivityForResult(new Intent(this, SettingActivity.class), Constant.CODE_UPDATE);
+                startActivityForResult(new Intent(this, SettingActivity.class), Constant.CODE_UPDATE);                break;
+
             default:
+                break;
+
         }
     }
 
@@ -2070,17 +2094,22 @@ public class MainActivity extends BaseActivity implements OnNavigationItemSelect
                             MainActivity.this.logOut();
                         }
                     }).cancelable(false).show();
+                    break;
+
                 case R.styleable.View_paddingEnd /*3*/:
                     new MaterialDialog.Builder(this).title((int) R.string.account_status).content((int) R.string.accout_delete).positiveText((int) R.string.ok).onPositive(new SingleButtonCallback() {
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                             dialog.cancel();
                             MainActivity.this.logOut();
                         }
-                    }).cancelable(false).show();
+                    }).cancelable(false).show();                break;
+
                 default:
                     if (mUser != null && mUser.getReady() != null && mUser.getReady().equals(ApiConstants.VAL_VERIFY)) {
                         trantoTab(new BlockFragment());
                     }
+                    break;
+
             }
         }
     }

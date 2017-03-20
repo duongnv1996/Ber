@@ -20,14 +20,14 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class PhotoViewActivity extends AppCompatActivity implements OnClickListener {
-    @Bind({2131689699})
+    @Bind({R.id.ll_cancel})
     CardView back;
-    @Bind({2131689626})
+    @Bind({R.id.image})
     ImageView image;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView((int) com.umberapp.umber.R.layout.activity_photo_view);
+        setContentView((int) R.layout.activity_photo_view);
         ButterKnife.bind((Activity) this);
         Intent i = getIntent();
         if (i != null) {

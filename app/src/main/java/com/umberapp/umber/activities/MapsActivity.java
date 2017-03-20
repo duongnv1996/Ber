@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 
 public class MapsActivity extends BaseActivity implements OnMapReadyCallback, OnClickListener {
     private boolean isTimeToFocus;
-    @Bind({2131689694})
+    @Bind({R.id.ll_root_map})
     RelativeLayout llRoot;
     int mCode;
     private LatLng mCurrentLatlng;
@@ -116,7 +116,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, On
                 }
             case R.id.btn_phone /*2131689697*/:
                 if (this.phone == null || this.phone.isEmpty()) {
-                    Toast.makeText(this, R.string.unable_connect_ex, 0).show();
+                    Toast.makeText(this, R.string.unable_connect_ex, Toast.LENGTH_SHORT).show();
                 } else {
                     CommonUtils.intentToCall(this.phone, this);
                 }

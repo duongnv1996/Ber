@@ -27,12 +27,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ChangePasswordFragment extends Fragment {
-    @Bind({2131689926})
+    @Bind({R.id.ll_update})
     CardView btnChange;
     ProgressDialogCustom dialogCustom;
-    @Bind({2131689685})
+    @Bind({R.id.edt_password})
     EditText edtPassword;
-    @Bind({2131689710})
+    @Bind({R.id.edt_repassword})
     EditText edtRepassword;
 
     /* renamed from: com.umberapp.umber.fragments.ChangePasswordFragment.1 */

@@ -34,7 +34,7 @@ public class WebFragment extends Fragment {
     private ProgressDialog mSpinner;
     private TextView mTitle;
     private String mUrl;
-    @Bind({2131689924})
+    @Bind({R.id.web})
     WebView mWebView;
 
     public interface OAuthDialogListener {

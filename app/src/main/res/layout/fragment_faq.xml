@@ -26,6 +26,7 @@
             android:visibility="gone">
 
             <LinearLayout
+                android:id="@+id/ll_noti"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -47,6 +48,7 @@
                             app:srcCompat="@drawable/ic_search" />
 
                         <EditText
+                            android:id="@+id/edt_search_faq"
                             style="@style/EdtSetting"
                             android:hint="@string/how_can_i_help_you"
                             android:inputType="text"
